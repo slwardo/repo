@@ -1,0 +1,41 @@
+gloud grants
+
+auth issues then 
+	gcloud auth application-default revoke
+	rm -rf ~/.config/gcloud/application_default_credentials.json
+
+gcloud auth application-default login --scopes="https://www.googleapis.com/auth/drive.readonly,https://www.googleapis.com/auth/cloud-p
+
+
+
+gcloud iam service-accounts add-iam-policy-binding docsearch@slwardo.iam.gserviceaccount.com \
+    --member="PRINCIPAL_TYPE:stefanward@google.com" \
+    --role="roles/iam.serviceAccountTokenCreator"
+    --no-condition
+
+gcloud projects add-iam-policy-binding slwardo \
+    --member="serviceAccount:docsearch@slwardo.iam.gserviceaccount.com" \
+    --role="roles/drive.readonly"
+
+gcloud projects add-iam-policy-binding YOUR_PROJECT_ID \
+    --member="serviceAccount:docsearch@slwardo.iam.gserviceaccount.com" \
+    --role="roles/drive.readonly" \
+    --no-condition
+
+gcloud projects add-iam-policy-binding slwardo \
+    --member="serviceAccount:docsearch@slwardo.iam.gserviceaccount.com" \
+    --role="roles/spreadsheet.editor" \
+    --condition="expression=request.time < timestamp('2025-12-15T16:53:31.524Z'),title=docsearch"
+
+gcloud iam service-accounts add-iam-policy-binding \
+  TARGET_SERVICE_ACCOUNT_EMAIL \
+  --member="serviceAccount:docsearch@slwardo.iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountTokenCreator"
+
+gcloud iam service-accounts add-iam-policy-binding docsearch@slwardo.iam.gserviceaccount.com \
+    --member="user:stefanward@google.com" \
+    --role="roles/iam.serviceAccountTokenCreator"
+
+gcloud projects add-iam-policy-binding slwardo \
+--member="serviceAccount:docsearch@slwardo.iam.gserviceaccount.com" \
+--role="roles/viewer"

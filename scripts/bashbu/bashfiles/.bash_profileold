@@ -1,0 +1,200 @@
+# ~/.bash_profile: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoredupes
+shopt -s cmdhist
+# append to the history file, don't overwrite it
+shopt -s histappend
+export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/homebrew/bin:$PATH
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+shopt -s checkwinsize
+export HISTIGNORE="&:ls:[bf]g:exit"
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+if [[ $TERM == *color ]]; then
+    color_prompt=yes
+fi
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+        color_prompt=yes
+    else
+        color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\][\033[00m\]:MAC\[\033[01;34m\]\w\[\033[00m\]\$ '
+else
+    PS1='${debian_chroot:+($debian_chroot)}:mac\w\$ '
+fi
+unset color_prompt force_color_prompt
+
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+    alias diff='diff --color=auto'
+fi
+
+
+# A helper function to help SSH to cloud machines.
+# Use: cloudssh <myproject>
+# Example: cloudssh cloudacrolinx-dev
+function cloudssh() {
+  if [[  $1 == "" ]]; then echo "provide the project name -> cloudssh <myproject>" ; return; fi
+  machines=( $( gcloud compute instances list --project "$1" --uri | sed 's#^https://www.googleapis.com/compute/v1/projects/\(.*\)/zones/\(.*\)/instances/\(.*\)$#nic0.\3.\2.c.\1.internal.gcpnode.com#' ))
+  if [[  $machines == "" ]]; then return; fi
+  for m in "${!machines[@]}"; do echo "$m)" "${machines[$m]}"; done
+  echo -n "Choose machine #"
+  read select
+  # If no selection (like extraneous "enter"), bail out.
+  if [[  $select == "" ]]; then echo "no selection, exiting"; return; fi
+  if [[  $2 == "" ]]; then
+    echo ssh "${machines[$select]}"
+    ssh  "${machines[$select]}"
+  else
+    echo ssh "${2}@${machines[$select]}"
+    ssh "${2}@${machines[$select]}"
+  fi
+}
+
+
+alias listall='cat $HOME/bin/exe/listall'
+
+# some more ls aliases
+bu () { cp ~/.bash_profile ~/.backup/'bash_profile'-`date +%Y%m%d%H%M`.backup ;  }
+alias bashme='vi $HOME/.bash_profile'
+alias editbash='bu && bashme'
+alias s='source $HOME/.bash_profile'
+alias gocert='gcert'
+alias cthn='ssh slwardo-01.c.googlers.com'
+alias goct='gocert && cthn'
+#alias curl="$HOME/homebrew/opt/curl/bin/curl"
+#alias openssl="$HOME/homebrew/opt/openssl/bin/openssl"
+
+alias lsa='ls -alh'                                                     # List files
+alias lsr='ls -alhr'                                                   # List files (reverse)
+
+# Navigation Shortcuts
+cs() { cd "$@" &&  ls; }                                             # Enter directory and list contents with ls
+cl() { cd "$@" && ll; }                                              # Enter directory and list contents with ll
+alias root='cd /'
+alias home='cd ~'
+alias scripts='cd ~/scripts'
+alias gitrepo='cd ~/gitrepo'
+alias downloads='cd ~/Downloads'
+alias bin='cd ~/bin'
+alias gdrive='cd ~/Google\ Drive/My\ Drive/'
+
+
+# Utilities
+alias getsshkey="pbcopy < ~/.ssh/id_rsa.pub"               # Copy SSH key to the keyboard
+disk-usage() { du -hs "$@" | sort -nr; }                  # List disk usage of all the files in a directory (use -hr to sort on server)
+mktar() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }    # Creates a *.tar.gz archive of a file or folder
+mkzip() { zip -r "${1%%/}.zip" "$1" ; }               # Create a *.zip archive of a file or folder
+h() { history | grep "$1"; }                                           # Shorthand for `history` with added grepping
+
+
+#unzip anything
+extract () {
+     if [ -f $1 ] ; then
+         case $1 in
+             *.tar.bz2)   tar xjf $1        ;;
+             *.tar.gz)    tar xzf $1     ;;
+             *.bz2)       bunzip2 $1       ;;
+             *.rar)       rar x $1     ;;
+             *.gz)        gunzip $1     ;;
+             *.tar)       tar xf $1        ;;
+             *.tbz2)      tar xjf $1      ;;
+             *.tgz)       tar xzf $1       ;;
+             *.zip)       unzip $1     ;;
+             *.Z)         uncompress $1  ;;
+             *.7z)        7z x $1    ;;
+             *)           echo "'$1' cannot be extracted via extract()" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+
+#dirsize - finds directory sizes and lists them for the current directory
+dirsize ()
+{
+du -shx * .[a-zA-Z0-9_]* 2> /dev/null | \
+egrep '^ *[0-9.]*[MG]' | sort -n > /tmp/list
+egrep '^ *[0-9.]*M' /tmp/list
+egrep '^ *[0-9.]*G' /tmp/list
+rm -rf /tmp/list
+}
+
+
+
+# For gcloud to reauth with SK.
+export SK_SIGNING_PLUGIN=gnubbyagent
+# http://b/353538084
+export GOOGLE_AUTH_WEBAUTHN_PLUGIN=gcloudwebauthn
+
+# Enable Enterprise Certificate Proxy for gcloud
+ECP_CERTIFICATE_CONFIG_FILE_PATH=/etc/certificate_config.json
+if groups | grep -q -w ecp-config-deployment ; then
+  export CLOUDSDK_CONTEXT_AWARE_CERTIFICATE_CONFIG_FILE_PATH="${ECP_CERTIFICATE_CONFIG_FILE_PATH}"
+  export GOOGLE_API_CERTIFICATE_CONFIG="${ECP_CERTIFICATE_CONFIG_FILE_PATH}"
+fi
+if groups | grep -q -w gcloud-mTLS-deployment ; then
+  export CLOUDSDK_CONTEXT_AWARE_USE_CLIENT_CERTIFICATE=true
+fi
+
+#if [ -d /etc/bash.bashrc.d ]; then
+#  for i in /etc/bash.bashrc.d/*.sh; do
+#    if [ -r $i ]; then
+#      . $i
+#    fi
+#  done
+#  unset i
+#fi
+
+# Suppress 'default interactive shell is now zsh' message
+# http://b/198760462
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/stefanward/gcp/gcp/google-cloud-sdk/path.bash.inc' ]; then . '/Users/stefanward/gcp/gcp/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/stefanward/gcp/gcp/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/stefanward/gcp/gcp/google-cloud-sdk/completion.bash.inc'; fi
+
+complete -C /Users/stefanward/homebrew/bin/terraform terraform

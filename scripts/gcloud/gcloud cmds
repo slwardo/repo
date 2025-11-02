@@ -1,0 +1,215 @@
+gcloud projects create slwardo-twin --folder=261046259366
+
+- projectId: slwardo1 # added by stefanward@ for project me 9/2025
+
+gcloud compute networks create managementnet --project=qwiklabs-gcp-01-2a9563ea5a3c --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional --bgp-best-path-selection-mode=legacy
+
+gcloud compute networks subnets create managementsubnet-us --project=qwiklabs-gcp-01-2a9563ea5a3c --range=10.240.0.0/20 --stack-type=IPV4_ONLY --network=managementnet --region=us-central1
+
+
+
+gcloud compute networks create privatenet --subnet-mode=custom
+
+gcloud compute networks subnets create privatesubnet-us --network=privatenet --region=us-central1 --range=172.16.0.0/24
+
+gcloud compute networks subnets create privatesubnet-notus --network=privatenet --region=asia-east1 --range=172.20.0.0/20
+
+gcloud compute networks list
+
+gcloud compute networks subnets list --sort-by=NETWORK
+
+
+
+gcloud compute --project=qwiklabs-gcp-01-2a9563ea5a3c firewall-rules create managementnet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=managementnet --action=ALLOW --rules=tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+
+
+gcloud compute firewall-rules create privatenet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=privatenet --action=ALLOW --rules=icmp,tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+
+gcloud compute firewall-rules list --sort-by=NETWORK
+
+gcloud compute instances create privatenet-us-vm --zone=us-central1-c --machine-type=e2-micro --subnet=privatesubnet-us --image-family=debian-12 --image-project=debian-cloud --boot-disk-size=10GB --boot-disk-type=pd-standard --boot-disk-device-name=privatenet-us-vm
+
+gcloud compute instances list --sort-by=ZONE
+
+
+
+
+
+sudo apt install iputils-ping
+
+gcloud compute networks create labnet --subnet-mode=custom
+
+gcloud compute networks subnets create labnet-sub \
+   --network labnet \
+   --region "us-east4" \
+   --range 10.0.0.0/28
+
+
+gcloud compute networks list
+
+
+
+gcloud compute networks list
+
+gcloud compute networks describe NETWORK_NAME
+
+gcloud compute networks subnets list
+
+gcloud compute firewall-rules create labnet-allow-internal \
+	--network=labnet \
+	--action=ALLOW \
+	--rules=icmp,tcp:22 \
+	--source-ranges=0.0.0.0/0
+
+gcloud compute firewall-rules describe [FIREWALL_RULE_NAME]
+
+
+## create vpc
+
+gcloud compute networks create privatenet --subnet-mode=custom
+
+
+
+
+
+/google/bin/releases/chp-hia-team/cloudwerkcli/cloudwerkcli \
+    --folder="google.com/teams/pso-team" \
+    --name="" \
+    --auto_assign_billing_account="true" \
+    --add_random_suffix="true" \
+    "slwardo-twin"
+
+
+safergcp import-project --projects slwardo1 --import-live-iam=true
+
+
+## create subnet
+gcloud compute networks subnets create private-sub \
+    --network=privatenet \
+    --region="us-east4" \
+    --range 10.1.0.0/28
+
+## create firewall
+gcloud compute firewall-rules create privatenet-deny \
+    --network=privatenet \
+    --action=DENY \
+    --rules=icmp,tcp:22 \
+    --source-ranges=0.0.0.0/0
+
+ gcloud compute firewall-rules list --sort-by=NETWORK
+
+ ## create vm
+
+gcloud compute instances create managementnet-us-vm \
+--zone="us-central1-c" \
+--machine-type=n1-standard-1 \
+--subnet=private-sub
+
+
+gcloud compute instances create inet-vm \
+--zone="us-east4-a" \
+--machine-type=n1-standard-1 \
+--subnet=labnet-sub
+
+gcloud compute instances list --sort-by=ZONE
+
+
+
+gcloud compute --project=qwiklabs-gcp-01-e63647dd4323 firewall-rules create managementnet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=managementnet --action=ALLOW --rules=tcp:22,tcp:3389 --source-ranges=0.0.0.0/0
+
+
+
+#mulit network vm
+gcloud compute instances create vm-appliance --project=qwiklabs-gcp-01-e63647dd4323 \
+   --zone=us-central1-c --machine-type=e2-medium \
+   --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=privatesubnet-us --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=managementsubnet-us --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=mynetwork \
+    --metadata=enable-osconfig=TRUE,enable-oslogin=true --maintenance-policy=MIGRATE --provisioning-model=STANDARD --service-account=1048842472949-compute@developer.gserviceaccount.com  \
+     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append --create-disk=auto-delete=yes,boot=yes,device-name=vm-appliance,disk-resource-policy=projects/qwiklabs-gcp-01-e63647dd4323/regions/us-central1/resourcePolicies/default-schedule-1,image=projects/debian-cloud/global/images/debian-12-bookworm-v20250812,mode=rw,size=10,type=pd-balanced --no-shielded-secure-boot --shielded-vtpm --shielded-integrity-monitoring --labels=goog-ops-agent-policy=v2-x86-template-1-4-0,goog-ec-src=vm_add-gcloud --reservation-affinity=any && printf 'agentsRule:\n  packageState: installed\n  version: latest\ninstanceFilter:\n  inclusionLabels:\n  - labels:\n      goog-ops-agent-policy: v2-x86-template-1-4-0\n' > config.yaml && gcloud compute instances ops-agents policies create goog-ops-agent-v2-x86-template-1-4-0-us-central1-c --project=qwiklabs-gcp-01-e63647dd4323 --zone=us-central1-c --file=config.yaml
+
+
+# This code is compatible with Terraform 4.25.0 and versions that are backwards compatible to 4.25.0.
+# For information about validating this Terraform code, see https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#format-and-validate-the-configuration
+
+resource "google_compute_instance" "managementnet-us-vm" {
+  boot_disk {
+    auto_delete = true
+    device_name = "managementnet-us-vm"
+
+    initialize_params {
+      image = "projects/debian-cloud/global/images/debian-12-bookworm-v20250812"
+      size  = 10
+      type  = "pd-balanced"
+    }
+
+    mode = "READ_WRITE"
+  }
+
+  can_ip_forward      = false
+  deletion_protection = false
+  enable_display      = false
+
+  labels = {
+    goog-ec-src           = "vm_add-tf"
+    goog-ops-agent-policy = "v2-x86-template-1-4-0"
+  }
+
+  machine_type = "e2-medium"
+
+  metadata = {
+    enable-osconfig = "TRUE"
+    enable-oslogin  = "true"
+  }
+
+  name = "managementnet-us-vm"
+
+  network_interface {
+    access_config {
+      network_tier = "PREMIUM"
+    }
+
+    queue_count = 0
+    stack_type  = "IPV4_ONLY"
+    subnetwork  = "projects/qwiklabs-gcp-01-e63647dd4323/regions/us-central1/subnetworks/managementsubnet-us"
+  }
+
+  scheduling {
+    automatic_restart   = true
+    on_host_maintenance = "MIGRATE"
+    preemptible         = false
+    provisioning_model  = "STANDARD"
+  }
+
+  service_account {
+    email  = "1048842472949-compute@developer.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/devstorage.read_only", "https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring.write", "https://www.googleapis.com/auth/service.management.readonly", "https://www.googleapis.com/auth/servicecontrol", "https://www.googleapis.com/auth/trace.append"]
+  }
+
+  shielded_instance_config {
+    enable_integrity_monitoring = true
+    enable_secure_boot          = false
+    enable_vtpm                 = true
+  }
+
+  zone = "us-central1-c"
+}
+
+module "ops_agent_policy" {
+  source          = "github.com/terraform-google-modules/terraform-google-cloud-operations/modules/ops-agent-policy"
+  project         = "qwiklabs-gcp-01-e63647dd4323"
+  zone            = "us-central1-c"
+  assignment_id   = "goog-ops-agent-v2-x86-template-1-4-0-us-central1-c"
+  agents_rule = {
+    package_state = "installed"
+    version = "latest"
+  }
+  instance_filter = {
+    all = false
+    inclusion_labels = [{
+      labels = {
+        goog-ops-agent-policy = "v2-x86-template-1-4-0"
+      }
+    }]
+  }
+}
+
+

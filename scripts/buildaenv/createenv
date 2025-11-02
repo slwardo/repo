@@ -1,0 +1,37 @@
+brew cleanup
+
+ brew install python@3.13
+
+ export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+
+gmailsearch@slwardo.iam.gserviceaccount.com
+
+#for all new projects run
+envbuild
+python3.13 -m venv venv
+
+
+#to start envbuild
+envstart 
+source venv/bin/activate
+
+
+python@3.13 pip -m
+
+deactivate
+
+pip install google-api-python-client google-auth google-auth-httplib2 google-auth-oauthlib
+
+
+i ran python3.13 -m venv venv, then source venv/bin/activate, then tried to python3.13 pip -m install the packages. i got the following error /opt/homebrew/Cellar/python@3.13/3.13.2/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python: can't open file '/Users/stefanward/projects/gmailcrawl/pip3': [Errno 2] No such file or directory
+
+
+
+gcloud iam service-accounts add-iam-policy-binding \
+  TARGET_SERVICE_ACCOUNT_EMAIL \
+  --member="serviceAccount:gmailsearch@slwardo.iam.gserviceaccount.com" \
+  --role="roles/iam.serviceAccountTokenCreator"
+
+  gcloud projects add-iam-policy-binding slwardo \
+--member="serviceAccount:gmailsearch@slwardo.iam.gserviceaccount.com" \
+--role="roles/viewer"

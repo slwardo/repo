@@ -1,0 +1,44 @@
+# VM in us-east4 (e.g., us-east4-c zone)
+gcloud compute instances create vm-us-east4 \
+    --project=qwiklabs-gcp-00-6399dbbc37f9 \
+    --zone=us-east4-c \
+    --machine-type=e2-micro \
+    --network-interface=network=isaac-custom-vpc,subnet=isaac-subnet-east4 \
+    --image-family=debian-11 \
+    --image-project=debian-cloud \
+    --boot-disk-size=20GB \
+    --tags=allow-ssh \
+    --description="VM in us-east4 connected to isaac-subnet-east4"
+
+# VM in us-central1 (e.g., us-central1-c zone)
+gcloud compute instances create vm-us-central1 \
+    --project=qwiklabs-gcp-00-6399dbbc37f9 \
+    --zone=us-central1-c \
+    --machine-type=e2-micro \
+    --network-interface=network=isaac-custom-vpc,subnet=isaac-subnet-central1 \
+    --image-family=debian-11 \
+    --image-project=debian-cloud \
+    --boot-disk-size=20GB \
+    --tags=allow-ssh \
+    --description="VM in us-central1 connected to isaac-subnet-central1"
+
+# VM in us-west4 (e.g., us-west4-c zone)
+gcloud compute instances create vm-us-west4 \
+    --project=qwiklabs-gcp-00-6399dbbc37f9 \
+    --zone=us-west4-c \
+    --machine-type=e2-micro \
+    --network-interface=network=isaac-custom-vpc,subnet=isaac-subnet-west4 \
+    --image-family=debian-11 \
+    --image-project=debian-cloud \
+    --boot-disk-size=20GB \
+    --tags=allow-ssh \
+    --description="VM in us-west4 connected to isaac-subnet-west4"
+
+
+
+
+
+912002254066-compute@developer.gserviceaccount.com  
+Enabled
+
+    qwiklabs-gcp-00-6399dbbc37f9-acac2e7a0af0.json

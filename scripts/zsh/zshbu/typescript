@@ -1,0 +1,1070 @@
+Script started on Wed Mar 26 09:31:32 2025
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/zsh/zshbu]1;..pts/zsh/zshbu]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/zsh/zshbu\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/zsh/zshbu[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;lstypescript zshenv.sh  zshrc.sh
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/zsh/zshbu]1;..pts/zsh/zshbu]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/zsh/zshbu\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/zsh/zshbu[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvvi wa[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/zsh/zshbu[0m[00m
+$ vi wa[K[131Cv1.11.2[138De r   v  sscripts[?1l>[?2004l
+]2;cd ~/scripts]1;scripts[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m             [1m[36mbashbu[39;49m[0m                  [1m[36moh-my-scripts[39;49m[0m           [1m[36moh-my-zsh-readonly[39;49m[0m      [1m[36msublime[39;49m[0m                 wardo
+ToDo.txt                [1m[36mmicroservices-demo-main[39;49m[0m [1m[36moh-my-zsh[39;49m[0m               orgbuild.zip            [1m[36mtest[39;49m[0m                    [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvvi w[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ vi wardo[1m [0m[K[127Cv1.11.2[134D[0m [?1l>[?2004l
+]2;vi wardo]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"wardo" 160L, 5682B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H# ~/.bash_profile: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)[2;75H[K[3;1H# for examples[3;15H[K[4;1H# If not running interactively, don't do anything
+case $- in
+    *i*) ;;[7;7H*) return;;
+esac
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoredupes
+shopt -s cmdhist
+# append to the history file, don't overwrite it
+shopt -s histappend
+export LD_LIBRARY_PATH=$HOME/homebrew/lib:$LD_LIBRARY_PATH
+export PATH=$HOME/homebrew/bin:$PATH
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=10000
+export HISTFILESIZE=20000
+shopt -s checkwinsize
+export HISTIGNORE="&:ls:[bf]g:exit"
+
+
+source "`brew --prefix grc`/etc/grc.bashrc"
+
+#export PS1="\w @ \h(\u): "
+
+export PS1="\w: "
+
+# A helper function to help SSH to cloud machines.
+# Use: cloudssh <myproject>
+# Example: cloudssh cloudacrolinx-dev
+function cloudssh() {
+  if [[  $1 == "" ]]; then echo "provide the project name -> cloudssh <myproject>" ; return; fi
+  machines=( $( gcloud compute instances list --project "$1" --uri | sed 's#^https://www.googleapis.com/compute/v1/projects/\(.*\)/zones/\(.*\)/inn[38;1Hstances/\(.*\)$#nic0.\3.\2.c.\1.internal.gcpnode.com#' ))
+  if [[  $machines == "" ]]; then return; fi
+  for m in "${!machines[@]}"; do echo "$m)" "${machines[$m]}"; done[1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[41;1H[K[41;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[41;1H[K[41;1H[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hl mmv w[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv wardo[1m [0m[K[127Cv1.11.2[134D[0m ba[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv wardo bashbu[1m/[0m[K[120Cv1.11.2[127D[0m [?1l>[?2004l
+]2;mv wardo bashbu]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 14 stefanward  primarygroup   448B Mar 26 09:32 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:32 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxrwxr-x@ 21 stefanward  primarygroup   672B Mar 21 05:49 [1m[36mmicroservices-demo-main[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 23 05:21 [1m[36moh-my-scripts[39;49m[0m
+drwxr-xr-x  25 stefanward  primarygroup   800B Mar 22 18:38 [1m[36moh-my-zsh[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 20 20:18 [1m[36mtest[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd te[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd test[1m/[0m[K[128Cv1.11.2[135D[0m [?1l>[?2004l
+]2;cd test]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/test]1;~/scripts/test]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/test\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/test[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;lsmain.tf     main.tf.zip
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/test]1;~/scripts/test]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/test\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/test[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m             [1m[36mbashbu[39;49m[0m                  [1m[36moh-my-scripts[39;49m[0m           [1m[36moh-my-zsh-readonly[39;49m[0m      [1m[36msublime[39;49m[0m                 [1m[36mzsh[39;49m[0m
+ToDo.txt                [1m[36mmicroservices-demo-main[39;49m[0m [1m[36moh-my-zsh[39;49m[0m               orgbuild.zip            [1m[36mtest[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 14 stefanward  primarygroup   448B Mar 26 09:32 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:32 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxrwxr-x@ 21 stefanward  primarygroup   672B Mar 21 05:49 [1m[36mmicroservices-demo-main[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 23 05:21 [1m[36moh-my-scripts[39;49m[0m
+drwxr-xr-x  25 stefanward  primarygroup   800B Mar 22 18:38 [1m[36moh-my-zsh[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 20 20:18 [1m[36mtest[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd  m[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd  microservices-demo-main[1m/[0m[K[108Cv1.11.2[115D[0m [?1l>[?2004l
+]2;cd microservices-demo-main]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/microservices-demo-main]1;..ces-demo-main]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/microservices-demo-main\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/microservices-demo-main[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;lsLICENSE              [1m[36mdocs[39;49m[0m                 [1m[36mkubernetes-manifests[39;49m[0m [1m[36mrelease[39;49m[0m              [1m[36mterraform[39;49m[0m
+README.md            [1m[36mhelm-chart[39;49m[0m           [1m[36mkustomize[39;49m[0m            skaffold.yaml
+cloudbuild.yaml      [1m[36mistio-manifests[39;49m[0m      [1m[36mprotos[39;49m[0m               [1m[36msrc[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/microservices-demo-main]1;..ces-demo-main]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/microservices-demo-main\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/microservices-demo-main[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m             [1m[36mbashbu[39;49m[0m                  [1m[36moh-my-scripts[39;49m[0m           [1m[36moh-my-zsh-readonly[39;49m[0m      [1m[36msublime[39;49m[0m                 [1m[36mzsh[39;49m[0m
+ToDo.txt                [1m[36mmicroservices-demo-main[39;49m[0m [1m[36moh-my-zsh[39;49m[0m               orgbuild.zip            [1m[36mtest[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv te[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv test[1m/[0m[K[128Cv1.11.2[135D[0m dev [?1l>[?2004l
+]2;mv test dev]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 15 stefanward  primarygroup   480B Mar 26 09:33 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:33 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   3 stefanward  primarygroup    96B Mar 26 09:33 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 20 20:18 [1m[36mdev[39;49m[0m
+drwxrwxr-x@ 21 stefanward  primarygroup   672B Mar 21 05:49 [1m[36mmicroservices-demo-main[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 23 05:21 [1m[36moh-my-scripts[39;49m[0m
+drwxr-xr-x  25 stefanward  primarygroup   800B Mar 22 18:38 [1m[36moh-my-zsh[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv mi[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv microservices-demo-main[1m/[0m[K[109Cv1.11.2[116D[0m dev[?1l>[?2004l
+]2;mv microservices-demo-main dev]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 14 stefanward  primarygroup   448B Mar 26 09:33 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:33 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   2 stefanward  primarygroup    64B Mar 26 09:33 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   7 stefanward  primarygroup   224B Mar 26 09:33 [1m[36mdev[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 23 05:21 [1m[36moh-my-scripts[39;49m[0m
+drwxr-xr-x  25 stefanward  primarygroup   800B Mar 22 18:38 [1m[36moh-my-zsh[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv oh  m  mmdm mkdri   ir oh-my[?1l>[?2004l
+]2;mkdir oh-my]1;mkdir[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 15 stefanward  primarygroup   480B Mar 26 09:34 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:34 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   2 stefanward  primarygroup    64B Mar 26 09:33 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   7 stefanward  primarygroup   224B Mar 26 09:33 [1m[36mdev[39;49m[0m
+drwxr-xr-x   2 stefanward  primarygroup    64B Mar 26 09:34 [1m[36moh-my[39;49m[0m
+drwxr-xr-x   6 stefanward  primarygroup   192B Mar 23 05:21 [1m[36moh-my-scripts[39;49m[0m
+drwxr-xr-x  25 stefanward  primarygroup   800B Mar 22 18:38 [1m[36moh-my-zsh[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my[K[128Cv1.11.2[135D-s[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my-scripts[1m/[0m[K[119Cv1.11.2[126D[0m oh-my[?1l>[?2004l
+]2;mv oh-my-scripts oh-my]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m        [1m[36mbashbu[39;49m[0m             [1m[36moh-my[39;49m[0m              [1m[36moh-my-zsh-readonly[39;49m[0m [1m[36msublime[39;49m[0m
+ToDo.txt           [1m[36mdev[39;49m[0m                [1m[36moh-my-zsh[39;49m[0m          orgbuild.zip       [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd o[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd oh-my[K[128Cv1.11.2[135D[?1l>[?2004l
+]2;cd oh-my]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/oh-my]1;~/scripts/oh-my]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/oh-my\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/oh-my[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36moh-my-scripts[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/oh-my]1;~/scripts/oh-my]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/oh-my\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/oh-my[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hs lls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m        [1m[36mbashbu[39;49m[0m             [1m[36moh-my[39;49m[0m              [1m[36moh-my-zsh-readonly[39;49m[0m [1m[36msublime[39;49m[0m
+ToDo.txt           [1m[36mdev[39;49m[0m                [1m[36moh-my-zsh[39;49m[0m          orgbuild.zip       [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my[K[128Cv1.11.2[135D-z[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my-zsh[K[124Cv1.11.2[131D oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my-zsh oh-my[K[118Cv1.11.2[125D[?1l>[?2004l
+]2;mv oh-my-zsh oh-my]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 13 stefanward  primarygroup   416B Mar 26 09:34 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:34 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   2 stefanward  primarygroup    64B Mar 26 09:33 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   7 stefanward  primarygroup   224B Mar 26 09:33 [1m[36mdev[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 26 09:34 [1m[36moh-my[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 21 17:10 [1m[36moh-my-zsh-readonly[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my[K[128Cv1.11.2[135D-z[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my-zsh-readonly[1m/[0m[K[114Cv1.11.2[121D[0m oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv oh-my-zsh-readonly oh-my[K[109Cv1.11.2[116D[?1l>[?2004l
+]2;mv oh-my-zsh-readonly oh-my]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226912
+drwxr-xr-x@ 12 stefanward  primarygroup   384B Mar 26 09:35 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:35 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   2 stefanward  primarygroup    64B Mar 26 09:33 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   142B Feb 16 11:30 ToDo.txt
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   7 stefanward  primarygroup   224B Mar 26 09:33 [1m[36mdev[39;49m[0m
+drwxr-xr-x   5 stefanward  primarygroup   160B Mar 26 09:35 [1m[36moh-my[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvvi T[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ vi ToDo.txt[1m [0m[K[124Cv1.11.2[131D[0m [?1l>[?2004l
+]2;vi ToDo.txt]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"ToDo.txt" 7L, 142B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1HToDo[2;1H[K[3;1H1 clean up repositories, go fix github and the other one[3;57H[K[5;1Hsee if you can clean up you terraform init mess
+
+is this a decent enou editor
+[94m~                                                                                                                                                 [9;1H~                                                                                                                                                 [10;1H~                                                                                                                                                 [11;1H~                                                                                                                                                 [12;1H~                                                                                                                                                 [13;1H~                                                                                                                                                 [14;1H~                                                                                                                                                 [15;1H~                                                                                                                                                 [16;1H~                                                                                                                                                 [17;1H~                                                                                                                                                 [18;1H~                                                                                                                                                 [19;1H~                                                                                                                                                 [20;1H~                                                                                                                                                 [21;1H~                                                                                                                                                 [22;1H~                                                                                                                                                 [23;1H~                                                                                                                                                 [24;1H~                                                                                                                                                 [25;1H~                                                                                                                                                 [26;1H~                                                                                                                                                 [27;1H~                                                                                                                                                 [28;1H~                                                                                                                                                 [29;1H~                                                                                                                                                 [30;1H~                                                                                                                                                 [31;1H~                                                                                                                                                 [32;1H~                                                                                                                                                 [33;1H~                                                                                                                                                 [34;1H~                                                                                                                                                 [35;1H~                                                                                                                                                 [36;1H~                                                                                                                                                 [37;1H~                                                                                                                                                 [38;1H~                                                                                                                                                 [39;1H~                                                                                                                                                 [40;1H~                                                                                                                                                 [1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[m[41;1H[K[41;1H:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[41;1H[K[41;1H[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hrrm T[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ rm ToDo.txt[1m [0m[K[124Cv1.11.2[131D[0m [?1l>[?2004l
+]2;rm ToDo.txt]1;rm[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsl  mmv o[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv o[K[132Cv1.11.2[139D
+[J[1;36moh-my[0m/        [Jorgbuild.zip[J[A[0m[27m[24m[0m[2Cmv o[K[132Cv1.11.2[0m[139Dr[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv orgbuild.zip[1m [0m[K[120Cv1.11.2[127D[0m de[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv orgbuild.zip dev[1m/[0m[K[116Cv1.11.2[123D[0m [?1l>[?2004l
+]2;mv orgbuild.zip dev]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m [1m[36mbashbu[39;49m[0m      [1m[36mdev[39;49m[0m         [1m[36moh-my[39;49m[0m       [1m[36msublime[39;49m[0m     [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 24
+drwxr-xr-x@ 10 stefanward  primarygroup   320B Mar 26 09:35 [1m[36m.[39;49m[0m
+drwxr-x---+ 72 stefanward  primarygroup   2.3K Mar 26 09:35 [1m[36m..[39;49m[0m
+-rw-r--r--@  1 stefanward  primarygroup    10K Mar 25 10:28 .DS_Store
+drwx------   3 stefanward  primarygroup    96B Mar 26 09:35 [1m[36m.tmp.driveupload[39;49m[0m
+drwxr-xr-x   4 stefanward  primarygroup   128B Mar 25 10:28 [1m[36mAppsscripts[39;49m[0m
+drwx------@  8 stefanward  primarygroup   256B Mar 26 09:32 [1m[36mbashbu[39;49m[0m
+drwxr-xr-x   8 stefanward  primarygroup   256B Mar 26 09:35 [1m[36mdev[39;49m[0m
+drwxr-xr-x   5 stefanward  primarygroup   160B Mar 26 09:35 [1m[36moh-my[39;49m[0m
+drwx------@  7 stefanward  primarygroup   224B Feb 20 01:04 [1m[36msublime[39;49m[0m
+drwxr-xr-x  12 stefanward  primarygroup   384B Mar 21 17:12 [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hm mmkdri py    ir pysd cripts[?1l>[?2004l
+]2;mkdir pyscripts]1;mkdir[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd d[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd dev[1m/[0m[K[129Cv1.11.2[136D[0m [?1l>[?2004l
+]2;cd dev]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/dev]1;~/scripts/dev]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/dev\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/dev[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hl[?1l>[?2004l
+]2;ls -G -lah]1;ltotal 226904
+drwxr-xr-x   8 stefanward  primarygroup   256B Mar 26 09:35 [1m[36m.[39;49m[0m
+drwxr-xr-x@ 11 stefanward  primarygroup   352B Mar 26 09:36 [1m[36m..[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 20 20:17 [1m[36m.terraform[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   1.1K Mar 20 20:17 .terraform.lock.hcl
+-rw-r--r--   1 stefanward  primarygroup   653B Mar 20 20:00 main.tf
+-rw-r--r--   1 stefanward  primarygroup   489B Mar 20 20:09 main.tf.zip
+drwxrwxr-x@ 21 stefanward  primarygroup   672B Mar 21 05:49 [1m[36mmicroservices-demo-main[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/dev]1;~/scripts/dev]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/dev\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/dev[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 226904
+drwxr-xr-x   8 stefanward  primarygroup   256B Mar 26 09:35 [1m[36m.[39;49m[0m
+drwxr-xr-x@ 11 stefanward  primarygroup   352B Mar 26 09:36 [1m[36m..[39;49m[0m
+drwxr-xr-x   3 stefanward  primarygroup    96B Mar 20 20:17 [1m[36m.terraform[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   1.1K Mar 20 20:17 .terraform.lock.hcl
+-rw-r--r--   1 stefanward  primarygroup   653B Mar 20 20:00 main.tf
+-rw-r--r--   1 stefanward  primarygroup   489B Mar 20 20:09 main.tf.zip
+drwxrwxr-x@ 21 stefanward  primarygroup   672B Mar 21 05:49 [1m[36mmicroservices-demo-main[39;49m[0m
+-rw-r--r--   1 stefanward  primarygroup   111M Feb 18 13:14 orgbuild.zip
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/dev]1;~/scripts/dev]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/dev\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/dev[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hd ccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m [1m[36mbashbu[39;49m[0m      [1m[36mdev[39;49m[0m         [1m[36moh-my[39;49m[0m       [1m[36mpyscripts[39;49m[0m   [1m[36msublime[39;49m[0m     [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlscd ..lsa  l  cd devmkdir pyscripts[15Dcd dev         [9Dl     lsacd ..ls     ppwd[?1l>[?2004l
+]2;pwd]1;pwd/Users/stefanward/scripts
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsl  ccd sc[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd scripts[K[126Cv1.11.2[140D[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd scripts[K[126Cv1.11.2[140D
+[J[1;36mAppsscripts[0m/  [J[1;36mpyscripts[0m/  [J[A[0m[27m[24m[0m[2Ccd scripts[K[126Cv1.11.2[0m[140Dpscriptsyscripts[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ cd pyscripts[1m/[0m[K[123Cv1.11.2[130D[0m [?1l>[?2004l
+]2;cd pyscripts]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/pyscripts]1;..pts/pyscripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/pyscripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/pyscripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;lsgmailsearch.py
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts/pyscripts]1;..pts/pyscripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts/pyscripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts/pyscripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m [1m[36mbashbu[39;49m[0m      [1m[36mdev[39;49m[0m         [1m[36moh-my[39;49m[0m       [1m[36mpyscripts[39;49m[0m   [1m[36msublime[39;49m[0m     [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvvi emailsearch.py[?1l>[?2004l
+]2;vi emailsearch.py]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"emailsearch.py" [New][2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[2;1H[94m~                                                                                                                                                 [3;1H~                                                                                                                                                 [4;1H~                                                                                                                                                 [5;1H~                                                                                                                                                 [6;1H~                                                                                                                                                 [7;1H~                                                                                                                                                 [8;1H~                                                                                                                                                 [9;1H~                                                                                                                                                 [10;1H~                                                                                                                                                 [11;1H~                                                                                                                                                 [12;1H~                                                                                                                                                 [13;1H~                                                                                                                                                 [14;1H~                                                                                                                                                 [15;1H~                                                                                                                                                 [16;1H~                                                                                                                                                 [17;1H~                                                                                                                                                 [18;1H~                                                                                                                                                 [19;1H~                                                                                                                                                 [20;1H~                                                                                                                                                 [21;1H~                                                                                                                                                 [22;1H~                                                                                                                                                 [23;1H~                                                                                                                                                 [24;1H~                                                                                                                                                 [25;1H~                                                                                                                                                 [26;1H~                                                                                                                                                 [27;1H~                                                                                                                                                 [28;1H~                                                                                                                                                 [29;1H~                                                                                                                                                 [30;1H~                                                                                                                                                 [31;1H~                                                                                                                                                 [32;1H~                                                                                                                                                 [33;1H~                                                                                                                                                 [34;1H~                                                                                                                                                 [35;1H~                                                                                                                                                 [36;1H~                                                                                                                                                 [37;1H~                                                                                                                                                 [38;1H~                                                                                                                                                 [39;1H~                                                                                                                                                 [40;1H~                                                                                                                                                 [1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[m[41;1H[1m-- INSERT --[m[41;13H[K[1;1H[?25h[?25lfrom google.auth import impersonated_credentials
+from goog[2;10H[K[2;10H[?25h[?25lle.auth.transport.requests import Request
+from googleapiclient.[3;22H[K[3;22H[?25h[?25ldiscovery import build
+from googleapiclient.errors import HttpE[4;41H[K[4;41H[?25h[?25lrror
+from docx import Document[5;26H[K[6;1Himport base64[6;14H[K[7;1H[K[8;1HSCOPES = ['https:[8;18H[K[8;18H[?25h[?25l//www.googleapis.com/auth/gmail.readonly']
+SERVICE_ACCOUNT_EMAI[9;21H[K[9;21H[?25h[?25lL = 'slwardogmp-test-sa@slwardo.iam.gserviceaccount.com'  # Rep[?25h[?25llace with your service account's email[10;1H[K[11;1Hdef search_gmail_and_cr[11;24H[K[11;24H[?25h[?25leate_doc(keyword1, keyword2, start_date, target_user_email, out[?25h[?25lput_filename):
+    """[12;8H[K[13;1H    Searches Gmail for emails matching t[13;41H[K[13;41H[?25h[?25lwo keywords after a specified date,
+    and creates a Word docu[14;28H[K[14;28H[?25h[?25lment with the email content.[15;1H[K[16;1H    Args:[16;10H[K[17;1H        keyword1 (str):[17;24H[K[17;24H[?25h[?25l The first keyword to search for.
+        keyword2 (str): The s[18;30H[K[18;30H[?25h[?25lecond keyword to search for.
+        start_date (str): The date[19;35H[K[19;35H[?25h[?25l to search from (YYYY/MM/DD).
+        target_user_email (str): [20;34H[K[20;34H[?25h[?25lThe email address of the user to impersonate.
+        output_fi[21;18H[K[21;18H[?25h[?25llename (str): The name of the Word document to create.
+    """[22;8H[K[23;1H[K[23;1H[?25h[?25l
+    try:[24;9H[K[25;1H        # Create credentials for impersonation[25;47H[K[26;1H      [26;7H[K[26;7H[?25h[?25l  creds = impersonated_credentials.Credentials(
+            sou[27;16H[K[27;16H[?25h[?25lrce_credentials=None,  # No source credentials needed for imper[?25h[?25lsonation
+            target_principal=SERVICE_ACCOUNT_EMAIL,[28;52H[K[29;1H  [29;3H[K[29;3H[?25h[?25l[10Ctarget_scopes=SCOPES,
+            subject=target_user[30;32H[K[30;32H[?25h[?25l_email,
+        )[31;10H[K[32;1H[K[33;1H        # Refresh credentials[33;30H[K[34;1H        creds.[34;15H[K[34;15H[?25h[?25lrefresh(Request())[35;1H[K[36;1H        # Build Gmail service[36;30H[K[37;1H        servi[37;14H[K[37;14H[?25h[?25lce = build('gmail', 'v1', credentials=creds)[38;1H[K[39;1H        # Search [39;18H[K[39;18H[?25h[?25lGmail
+        query = f[40;18H[K[40;18H[?25h[?25l'{keyword1} {keyword2} after:{start_date}'[40;14H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hresults = service.users().messages().list(userId='me', q=query)[41;11H[1m(paste) --[40;72H[?25h[?25l[m.execute()    [?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hmessages = results.get('messages',)[40;9Hif not messages:[16C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hprint(f'No messages found matching "{query}"')[40;23H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13Hreturn[40;9H# Create Word document[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hdoc = Document()[40;9Hfor message in messages:[24C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hmsg = service.users().messages().get(userId='me', id=message['id'], format='full').execute()[40;15H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hheaders = msg['payload'].get('headers',)[40;25H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hsubject = next((header['value'] for header in headers if header['name'] == [?25h[?25l'Subject'), 'No Subject')[40;38H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hsender = next((header['value'] for header in headers if header['name'] == 'From'), 'No S[?25h[?25lender')[40;56H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdate = next((header['value'] for header in headers if header['name'] == 'Date'), 'No Date')[40;15H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody_parts = [part for part in msg['payload'].get('parts',) if pa[?25h[?25lrt['mimeType'] == 'text/plain'][40;32H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody = body_parts[0]['body']['data'] if body_parts else 'No body'[40;17H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody = base64.urlsafe_b64decode(body).decode('utf-8')[40;13H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;13Hdoc.add_paragraph(f'Subject: {subject}')[40;23H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdoc.add_paragraph(f'From: {sender}')[40;37H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdoc.add_paragraph(f'Date: {date}')     [?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hdoc.add_paragraph(f'Body: {body}')[40;13Hdoc.add_paragraph('-------------------------------------[?25h[?25l---')[40;33H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;9H# Save document[40;9Hdoc.save(output_filename)[40;7H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hprint(f'Document created: {output_filename}')[40;5Hexcept HttpError as error:[8C[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hprint(f'An error occurred: {error}')[40;28H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H# Prompt the user for input
+keyword1 = input("Enter the first keyword: ")[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hkeyword2 = input("Enter the second keyword: ")ke[?25h[?25l[1;40r[1;1H[2M[1;41r[39;1Hstart_date = input("Enter the start date (YYYY/MM/DD): ")
+target_user_email = input("Enter the target user's email address:[?25h[?25l ")[40;60H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Houtput_filename = f'gmail_emails_{keyword1}_{keyword2}_{target_user_email.split("@")[0]}.docx'[40;27H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;1Hsearch_gmail_and_create_doc(keyword1, keyword2, start_date, target_user_email, output_fil[?25h[?25l[1;40r[40;1H
+[1;41r[39;90Hename)[41;11H[1m--a[m[41;13H[K[40;1H[?25h[?25l1[?25h[?25l:[?25h[?25le[?25h[?25lw[?25h[?25l[40;4H[K[40;4H[?25h[?25l[40;3H[K[40;3H[?25h[?25l[40;2H[K[40;2H[?25h[?25l[40;1H[K[40;1H[?25h[?25l[39;28H[46m([66C)[m
+[94m~                                                                                                                                                 [39;96H[?25h[?25l[m[39;28H([66C)![?25h[?25l[39;28H[46m([66C)[m[39;96H[K[39;96H[?25h[?25l[39;28H([66C) [?25h[41;1H[K[39;96H[?25l[?25h[?25l
+
+:[?25hwq![?25l[?2004l[>4;m"emailsearch.py" [New] 81L, 3533B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hu vvi emailsearch3.  2.py[?1l>[?2004l
+zsh: correct 'emailsearch2.py' to 'emailsearch.py' [nyae]? n
+]2;vi emailsearch2.py]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"emailsearch2.py" [New][2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[2;1H[94m~                                                                                                                                                 [3;1H~                                                                                                                                                 [4;1H~                                                                                                                                                 [5;1H~                                                                                                                                                 [6;1H~                                                                                                                                                 [7;1H~                                                                                                                                                 [8;1H~                                                                                                                                                 [9;1H~                                                                                                                                                 [10;1H~                                                                                                                                                 [11;1H~                                                                                                                                                 [12;1H~                                                                                                                                                 [13;1H~                                                                                                                                                 [14;1H~                                                                                                                                                 [15;1H~                                                                                                                                                 [16;1H~                                                                                                                                                 [17;1H~                                                                                                                                                 [18;1H~                                                                                                                                                 [19;1H~                                                                                                                                                 [20;1H~                                                                                                                                                 [21;1H~                                                                                                                                                 [22;1H~                                                                                                                                                 [23;1H~                                                                                                                                                 [24;1H~                                                                                                                                                 [25;1H~                                                                                                                                                 [26;1H~                                                                                                                                                 [27;1H~                                                                                                                                                 [28;1H~                                                                                                                                                 [29;1H~                                                                                                                                                 [30;1H~                                                                                                                                                 [31;1H~                                                                                                                                                 [32;1H~                                                                                                                                                 [33;1H~                                                                                                                                                 [34;1H~                                                                                                                                                 [35;1H~                                                                                                                                                 [36;1H~                                                                                                                                                 [37;1H~                                                                                                                                                 [38;1H~                                                                                                                                                 [39;1H~                                                                                                                                                 [40;1H~                                                                                                                                                 [1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[m[41;1H[1m-- INSERT --[m[41;13H[K[1;1H[?25h[?25lfrom google.auth import impersonated_credentials
+from goog[2;10H[K[2;10H[?25h[?25lle.auth.transport.requests import Request
+from googleapiclient.[3;22H[K[3;22H[?25h[?25ldiscovery import build
+from googleapiclient.errors import HttpE[4;41H[K[4;41H[?25h[?25lrror
+from docx import Document[5;26H[K[6;1Himport base64[6;14H[K[7;1H[K[8;1HSCOPES = ['https:[8;18H[K[8;18H[?25h[?25l//www.googleapis.com/auth/gmail.readonly']
+SERVICE_ACCOUNT_EMAI[9;21H[K[9;21H[?25h[?25lL = 'slwardogmp-test-sa@slwardo.iam.gserviceaccount.com'  # Rep[?25h[?25llace with your service account's email[10;1H[K[11;1Hdef search_gmail_and_cr[11;24H[K[11;24H[?25h[?25leate_doc(keyword1, keyword2, start_date, target_user_email, out[?25h[?25lput_filename):
+    """[12;8H[K[13;1H    Searches Gmail for emails matching t[13;41H[K[13;41H[?25h[?25lwo keywords after a specified date,
+    and creates a Word docu[14;28H[K[14;28H[?25h[?25lment with the email content.[15;1H[K[16;1H    Args:[16;10H[K[17;1H        keyword1 (str):[17;24H[K[17;24H[?25h[?25l The first keyword to search for.
+        keyword2 (str): The s[18;30H[K[18;30H[?25h[?25lecond keyword to search for.
+        start_date (str): The date[19;35H[K[19;35H[?25h[?25l to search from (YYYY/MM/DD).
+        target_user_email (str): [20;34H[K[20;34H[?25h[?25lThe email address of the user to impersonate.
+        output_fi[21;18H[K[21;18H[?25h[?25llename (str): The name of the Word document to create.
+    """[22;8H[K[23;1H[K[23;1H[?25h[?25l
+    try:[24;9H[K[25;1H        # Create credentials for impersonation[25;47H[K[26;1H      [26;7H[K[26;7H[?25h[?25l  creds = impersonated_credentials.Credentials(
+            sou[27;16H[K[27;16H[?25h[?25lrce_credentials=None,  # No source credentials needed for imper[?25h[?25lsonation
+            target_principal=SERVICE_ACCOUNT_EMAIL,[28;52H[K[29;1H  [29;3H[K[29;3H[?25h[?25l[10Ctarget_scopes=SCOPES,
+            subject=target_user[30;32H[K[30;32H[?25h[?25l_email,
+        )[31;10H[K[32;1H[K[33;1H        # Refresh credentials[33;30H[K[34;1H        creds.[34;15H[K[34;15H[?25h[?25lrefresh(Request())[35;1H[K[36;1H        # Build Gmail service[36;30H[K[37;1H        servi[37;14H[K[37;14H[?25h[?25lce = build('gmail', 'v1', credentials=creds)[38;1H[K[39;1H        # Search [39;18H[K[39;18H[?25h[?25lGmail
+        query = f'{keyword1} {keyword2} after:{start_date[40;58H[K[40;58H[?25h[?25l}' [?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hresults = service.users().messages().list(userId='me', q=query).execute()[41;11H[1m(paste) --[40;42H[?25h[?25l[1;40r[m[40;1H
+[1;41r[40;9Hmessages = results.get('messages',)[40;35H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;9Hif not messages:[40;13Hprint(f'No messages found matching "{query}"')[40;19H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;13Hreturn[40;9H# Create Word document[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hdoc = Document()[40;9Hfor message in messages:[22C[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hmsg = service.users().messages().get(userId='me', id=message['id'], format='full').execute()[40;13H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hheaders = msg['payload'].get('headers',)[40;23H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hsubject = next((header['value'] for header in headers if header['name'] =[?25h[?25l= 'Subject'), 'No Subject')[40;36H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hsender = next((header['value'] for header in headers if header['name'] == 'From'), 'No[?25h[?25l Sender')[40;54H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdate = next((header['value'] for header in headers if header['name'] == 'Date'), 'No Date')[40;13H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody_parts = [part for part in msg['payload'].get('parts',) if [?25h[?25lpart['mimeType'] == 'text/plain'][40;30H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody = body_parts[0]['body']['data'] if body_parts else 'No body'[40;15H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hbody = base64.urlsafe_b64decode(body).decode('utf-8')[40;11H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;13Hdoc.add_paragraph(f'Subject: {subject}')[40;21H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdoc.add_paragraph(f'From: {sender}')[40;35H[?25h[?25l[1;40r[40;1H
+[1;41r[40;13Hdoc.add_paragraph(f'Date: {date}')   [?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hdoc.add_paragraph(f'Body: {body}')[40;13Hdoc.add_paragraph('-----------------------------------[?25h[?25l-----')[40;31H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;9H# Save document[40;9Hdoc.save(output_filename)    [?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hprint(f'Document created: {output_filename}')[40;5Hexcept HttpError as error:      [?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hprint(f'An error occurred: {error}')[40;26H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;1H# Prompt the user for input
+keyword1 = input("Enter the first keyword: ")[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hkeyword2 = input("Enter the second keyword: ")[?25h[?25l[1;40r[1;1H[2M[1;41r[39;1Hstart_date = input("Enter the start date (YYYY/MM/DD): ")
+target_user_email = input("Enter the target user's email addres[?25h[?25ls: ")[40;58H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Houtput_filename = f'gmail_emails_{keyword1}_{keyword2}_{target_user_email.split("@")[0]}.docx'[40;25H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;1Hsearch_gmail_and_create_doc(keyword1, keyword2, start_date, target_user_email, output_f[?25h[?25l[1;40r[40;1H
+[1;41r[39;88Hilename)[41;11H[1m--a[m[41;13H[K[40;1H[?25h[?25lu[?25h[41;1H[K[40;1H[?25l[?25h[?25l
+:[?25hq![?25l[?2004l[>4;m[23;2t[23;1t[41;1H[K[41;1H[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvi emailsearch2.py[?1l>[?2004l
+zsh: correct 'emailsearch2.py' to 'emailsearch.py' [nyae]? n
+]2;vi emailsearch2.py]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"emailsearch2.py" [New][2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[2;1H[94m~                                                                                                                                                 [3;1H~                                                                                                                                                 [4;1H~                                                                                                                                                 [5;1H~                                                                                                                                                 [6;1H~                                                                                                                                                 [7;1H~                                                                                                                                                 [8;1H~                                                                                                                                                 [9;1H~                                                                                                                                                 [10;1H~                                                                                                                                                 [11;1H~                                                                                                                                                 [12;1H~                                                                                                                                                 [13;1H~                                                                                                                                                 [14;1H~                                                                                                                                                 [15;1H~                                                                                                                                                 [16;1H~                                                                                                                                                 [17;1H~                                                                                                                                                 [18;1H~                                                                                                                                                 [19;1H~                                                                                                                                                 [20;1H~                                                                                                                                                 [21;1H~                                                                                                                                                 [22;1H~                                                                                                                                                 [23;1H~                                                                                                                                                 [24;1H~                                                                                                                                                 [25;1H~                                                                                                                                                 [26;1H~                                                                                                                                                 [27;1H~                                                                                                                                                 [28;1H~                                                                                                                                                 [29;1H~                                                                                                                                                 [30;1H~                                                                                                                                                 [31;1H~                                                                                                                                                 [32;1H~                                                                                                                                                 [33;1H~                                                                                                                                                 [34;1H~                                                                                                                                                 [35;1H~                                                                                                                                                 [36;1H~                                                                                                                                                 [37;1H~                                                                                                                                                 [38;1H~                                                                                                                                                 [39;1H~                                                                                                                                                 [40;1H~                                                                                                                                                 [1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[m[41;1H[1m-- INSERT --[m[41;13H[K[1;1H[?25h[?25lfrom google.auth.transport.requests import Request
+from [2;6H[K[2;6H[?25h[?25lgoogle.oauth2.credentials import Credentials
+from google_auth_[3;18H[K[3;18H[?25h[?25loauthlib.flow import InstalledAppFlow
+from googleapiclient.dis[4;25H[K[4;25H[?25h[?25lcovery import build
+from googleapiclient.errors import HttpErro[5;44H[K[5;44H[?25h[?25lr
+import datetime[6;16H[K[7;1Himport base64[7;14H[K[8;1H[K[9;1H# If modifying these scopes, d[9;31H[K[9;31H[?25h[?25lelete the file token.json.
+SCOPES = ['https://www.googleapis.co[10;37H[K[10;37H[?25h[?25lm/auth/gmail.readonly', 'https://www.googleapis.com/auth/docume[?25h[?25lnts'][11;1H[K[12;1Hdef search_gmail_and_create_doc(keyword1, keyword2, star[12;57H[K[12;57H[?25h[?25lt_date):
+    """Searches Gmail based on keywords and date, then[13;55H[K[13;55H[?25h[?25l creates a Google Doc."""
+    creds = None[14;17H[K[15;1H    # The file token[15;21H[K[15;21H[?25h[?25l.json stores the user's access and refresh tokens, and is
+    #[16;6H[K[16;6H[?25h[?25l created automatically when the authorization flow completes fo[?25h[?25lr the first
+    # time.[17;12H[K[18;1H    if os.path.exists('token.json'):[18;37H[K[19;1H  [19;3H[K[19;3H[?25h[?25l      creds = Credentials.from_authorized_user_file('token.json[?25h[?25l', SCOPES)
+    # If there are no (valid) credentials available,[20;53H[K[20;53H[?25h[?25l let the user log in.
+    if not creds or not creds.valid:[21;37H[K[22;1H    [22;5H[K[22;5H[?25h[?25l    if creds and creds.expired and creds.refresh_token:
+       [23;8H[K[23;8H[?25h[?25l     creds.refresh(Request())
+        else:[24;14H[K[25;1H            flow = [25;20H[K[25;20H[?25h[?25lInstalledAppFlow.from_client_secrets_file(
+                'cre[26;21H[K[26;21H[?25h[?25ldentials.json', SCOPES)
+            creds = flow.run_local_serv[27;40H[K[27;40H[?25h[?25ler(port=0)
+        # Save the credentials for the next run[28;48H[K[29;1H    [29;5H[K[29;5H[?25h[?25l    with open('token.json', 'w') as token:
+            token.wr[30;21H[K[30;21H[?25h[?25lite(creds.to_json())[31;1H[K[32;1H    try:[32;9H[K[33;1H        # Gmail API[33;20H[K[34;1H        serv[34;13H[K[34;13H[?25h[?25lice_gmail = build('gmail', 'v1', credentials=creds)
+        # D[35;12H[K[35;12H[?25h[?25locs API
+        service_docs = build('docs', 'v1', credentials=[36;56H[K[36;56H[?25h[?25lcreds)[37;1H[K[38;1H        # Construct the search query.[38;38H[K[39;1H        query = f[39;18H[K[39;18H[?25h[?25l'after:{start_date} {keyword1} {keyword2}'
+        results = se[40;21H[K[40;21H[?25h[?25lrvice_gmail.users().messages().list(userId='me', q=query).execu[?25h[?25lte()[40;11H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hmessages = results.get('messages', [])[40;9Hif not messages:[41;11H[1m(paste) --[40;9H[?25h[?25l[1;40r[m[1;1H[2M[1;41r[39;13Hprint('No messages found.')[40;13Hreturn[?25h[?25l[1;40r[1;1H[3M[1;41r[39;9H# Create a new Google Doc.[40;9Hdocument = {'title': f'Gmail Search Results - {datetime.date.today()}'}[?25h[?25l[40;63H[?25h[?25l[1;40r[40;1H
+[1;41r[40;9Hdocument = service_docs.documents().create(body=document).execute()[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hdocument_id = document.get('documentId')[40;8H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;9Hrequests = [][39;9Hfor message in messages:[40;13Hmsg = service_gmail.users().messages().get(userId='me', id[?25h[?25l=message['id'], format='full').execute([?25h[?25l)[40;33H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hpayload = msg['payload'][40;13Hheaders = payload['headers'][40;25H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hfor header in headers:[40;17Hif header['name'] == 'Subject':[?25h[?25l[1;40r[40;1H
+[1;41r[40;21Hsubject = header['value'][40;17H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;17Hif header['name'] == 'From':[40;21Hsender = header['value'][40;37H[?25h[?25l[1;40r[40;1H
+[1;41r[40;17Hif header['name'] == 'Date':[40;12H[?25h[?25l[1;40r[1;1H[3M[1;41r[38;21Hdate = header['value'][40;13H# Extract the message body.[?25h[?25l[1;40r[1;1H[2M[1;41r[39;13Hif 'parts' in payload:[40;17Hfor part in payload['parts']:[40;18H[?25h[?25l[1;40r[40;1H
+[1;41r[40;21Hif part['mimeType'] == 'text/plain':[40;24H[?25h[?25l[1;40r[40;1H
+[1;41r[40;25Hdata = part['body']['data'][40;35H[?25h[?25l[1;40r[40;1H
+[1;41r[40;25Hmessage_body = base64.urlsafe_b64decode(data).decode()[40;19H[?25h[?25l[1;40r[40;1H
+[1;41r[40;25Hbreak[12C[?25h[?25l[1;40r[40;1H
+[1;41r[40;21Helif part['mimeType'] == 'text/html':[40;51H[?25h[?25l[1;40r[40;1H
+[1;41r[40;25Hdata = part['body']['data'][12C[?25h[?25l[1;40r[40;1H
+[1;41r[40;25Hmessage_body = 'HTML email. HTML data not included for simplicity.'[40;7H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;25Hbreak[40;13Helse:[35C[?25h[?25l[1;40r[40;1H
+[1;41r[40;17Hif payload['mimeType'] == 'text/plain':[40;10H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;21Hdata = payload['body']['data'][40;21Hmessage_body = base64.urlsafe_b64decode(data).decode[?25h[?25l()   [?25h[?25l[1;40r[1;1H[2M[1;41r[39;17Helif payload['mimeType'] == 'text/html':[40;21Hdata = payload['body']['data'][40;16H[?25h[?25l[1;40r[40;1H
+[1;41r[40;21Hmessage_body = 'HTML email. HTML data not included for sim[?25h[?25lplicity.'[40;23H[?25h[?25l[1;40r[1;1H[3M[1;41r[39;13Hrequests.append({[40;17H'insertText': {[40;20H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;21H'location': {[40;25H'index': 1,[40;24H[?25h[?25l[1;40r[1;1H[2M[1;41r[39;21H},[40;21H'text': f'Subject: {subject}\nFrom: {sender}\nDate: {date}\n\n{mes[?25h[?25lsage_body}\n\n--------------------\n\n',    [?25h[?25l[1;40r[1;1H[2M[1;41r[39;17H}[40;13H})[17C[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hif requests:[40;11Hresult = service_docs.documents().batchUpdate(documentId=document_id, body={'request[?25h[?25ls': requests}).execute()[40;39H[?25h[?25l[1;40r[40;1H
+[1;41r[40;11Hprint(f'Document created: https://docs.google.com/document/d/{document_id}')[40;14H[?25h[?25l[1;40r[1;1H[2M[1;41r[40;5Hexcept HttpError as error:[?25h[?25l[1;40r[1;1H[2M[1;41r[39;9Hprint(f'An error occurred: {error}')[40;20H[?25h[?25l[1;40r[1;1H[4M[1;41r[37;1Himport os.path
+
+if __name__ == '__main__':
+    keyword1 = input("Enter keyword 1: ")[?25h[?25l[1;40r[40;1H
+[1;41r[40;5Hkeyword2 = input("Enter keyword 2: ")   [?25h[?25l[1;40r[1;1H[2M[1;41r[39;5Hstart_date = input("Enter start date (YYYY/MM/DD): ")
+    search_gmail_and_create_doc(keyword1, keyword2, start_date)[?25h[?25l[40;32H[46m([30C)[?25h[m[41;1H[K[40;63H[?25l[?25h[?25l
+:[?25hwq![?25l[?2004l[>4;m"emailsearch2.py" [New] 105L, 4523B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppyh thon3.12 2 emailsearch3 2.py[?1l>[?2004l
+]2;python3.12 emailsearch2.py]1;python3.12zsh: command not found: python3.12
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd c  lls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m     [1m[36mbashbu[39;49m[0m          [1m[36mdev[39;49m[0m             emailsearch.py  emailsearch2.py [1m[36moh-my[39;49m[0m           [1m[36mpyscripts[39;49m[0m       [1m[36msublime[39;49m[0m         [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ls[?1l>[?2004l
+]2;cd ls]1;cdcd: no such file or directory: ls
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmv ema[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv emailsearch[K[122Cv1.11.2[129D* py[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ mv emailsearch* pyscripts[1m/[0m[K[110Cv1.11.2[117D[0m [?1l>[?2004l
+]2;mv emailsearch* pyscripts]1;mv[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m [1m[36mbashbu[39;49m[0m      [1m[36mdev[39;49m[0m         [1m[36moh-my[39;49m[0m       [1m[36mpyscripts[39;49m[0m   [1m[36msublime[39;49m[0m     [1m[36mzsh[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/scripts]1;~/scripts]7;file://stefanward-mac.roam.internal/Users/stefanward/scripts\[0m[27m[24m[J[34mstefanward[00m in [34m~/scripts[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd c ccd c cd[?1l>[?2004l
+]2;cd]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mApplications[39;49m[0m                    [1m[36mPublic[39;49m[0m                          google-cloud-cli-darwin-arm.tar [1m[36mtooling[39;49m[0m
+[1m[36mDesktop[39;49m[0m                         [1m[36mPycharmProjects[39;49m[0m                 mac sc                          typescript
+[1m[36mDocuments[39;49m[0m                       [1m[36mWorkspace[39;49m[0m                       [1m[36mmy-venv[39;49m[0m                         uninstall.sh
+[1m[36mDownloads[39;49m[0m                       backup                          newvimrc                        usefulthings
+[35mGoogle Drive[39;49m[0m                    [1m[36mbin[39;49m[0m                             ohmy Commands                   vim shortcuts
+[1m[36mLibrary[39;49m[0m                         [1m[36mdisplaylink[39;49m[0m                     [1m[36mpath[39;49m[0m                            vimrc_example.vim
+[1m[36mMovies[39;49m[0m                          [1m[36mfucked[39;49m[0m                          [1m[36mprojects[39;49m[0m                        vimrc~
+[1m[36mMusic[39;49m[0m                           [1m[36mgcp[39;49m[0m                             [1m[36mscripts[39;49m[0m                         [1m[36mwardo[39;49m[0m
+[1m[36mPictures[39;49m[0m                        [1m[36mgitrepo[39;49m[0m                         [1m[36mthinkorswim[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hbbash install python               b  bbrew list[?1l>[?2004l
+]2;brew list]1;brew[34m==>[0m [1mFormulae[0m
+autoconf	ca-certificates	gh		libnghttp2	libyaml		mpdecimal	pcre2		rtmpdump	virtualenv
+bash		curl		git		libssh2		lz4		ncurses		pipx		sqlite		xz
+brotli		gettext		gmp		libunistring	m4		openssl@3	readline	terraform	zstd
+
+[34m==>[0m [1mCasks[0m
+font-hack-nerd-font
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hbbrew update[?1l>[?2004l
+]2;brew update]1;brew[34m==>[0m [1mUpdating Homebrew...[0m
+Updated 3 taps (hashicorp/tap, homebrew/core and homebrew/cask).
+[34m==>[0m [1mNew Formulae[0m
+ktexttemplate
+[34m==>[0m [1mNew Casks[0m
+pastenow
+[34m==>[0m [1mOutdated Formulae[0m
+terraform
+
+You have [1m1[0m outdated formula installed.
+You can upgrade it with [1mbrew upgrade[0m
+or list it with [1mbrew outdated[0m.
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hbbrew doctor[?1l>[?2004l
+]2;brew doctor]1;brew[1mPlease note that these warnings are just used to help the Homebrew maintainers
+with debugging if you file an issue. If everything you use Homebrew for is
+working fine: please don't worry or file an issue; just ignore this. Thanks![0m
+
+[33mWarning:[0m The following formulae have the same name as core formulae:
+  hashicorp/tap/consul-template
+  hashicorp/tap/levant
+  hashicorp/tap/nomad
+  hashicorp/tap/packer
+  hashicorp/tap/terraform
+  hashicorp/tap/terraform-ls
+  hashicorp/tap/vault
+  hashicorp/tap/waypoint
+Their taps are in use, so you must use these full names throughout Homebrew.
+
+[33mWarning:[0m Unbrewed dylibs were found in /usr/local/lib.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae and may need to be deleted.
+
+Unexpected dylibs:
+  /usr/local/lib/libfido2.1.14.0.dylib
+
+[33mWarning:[0m Unbrewed header files were found in /usr/local/include.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae and may need to be deleted.
+
+Unexpected header files:
+  /usr/local/include/fido.h
+  /usr/local/include/fido/*
+
+[33mWarning:[0m Unbrewed '.pc' files were found in /usr/local/lib/pkgconfig.
+If you didn't put them there on purpose they could cause problems when
+building Homebrew formulae and may need to be deleted.
+
+Unexpected '.pc' files:
+  /usr/local/lib/pkgconfig/libfido2.pc
+
+[33mWarning:[0m Broken symlinks were found. Remove them with `brew cleanup`:
+  /opt/homebrew/opt/python@3
+
+[33mWarning:[0m Some installed formulae are missing dependencies.
+You should `brew install` the missing dependencies:
+  brew install python@3.13
+
+Run `brew missing` for more details.
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[7mbrew cleanup[27m[12D[27mb[27mr[27me[27mw[27m [27mc[27ml[27me[27ma[27mn[27mu[27mp[?1l>[?2004l
+]2;brew cleanup]1;brew[33mWarning:[0m Skipping hashicorp/tap/terraform: most recent version 1.11.3 not installed
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/8ac6930584713b662ecc04b434b93d93a38a3611/Formula/openssl@3.rb... (7.3KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/a97fa64f912335a85d9d81d156eb6e60a3e573ae/Formula/openssl@3.0.rb... (5.2KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/a97fa64f912335a85d9d81d156eb6e60a3e573ae/Formula/wget.rb... (1.9KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/c27268dbd0cffbaa22cf36a9e09d9efb8bb34e12/Formula/gettext.rb... (2.6KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/c27268dbd0cffbaa22cf36a9e09d9efb8bb34e12/Formula/libidn2.rb... (2.7KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/c27268dbd0cffbaa22cf36a9e09d9efb8bb34e12/Formula/pkgconf.rb... (3.8KB)
+Removing: /Users/stefanward/Library/Caches/Homebrew/api-source/Homebrew/homebrew-core/c27268dbd0cffbaa22cf36a9e09d9efb8bb34e12/Formula/wget.rb... (1.9KB)
+Pruned 1 symbolic links from /opt/homebrew
+[34m==>[0m [1mThis operation has freed approximately 25.5KB of disk space.[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[7m brew install python@3.13[27m[25D[27m [27mb[27mr[27me[27mw[27m [27mi[27mn[27ms[27mt[27ma[27ml[27ml[27m [27mp[27my[27mt[27mh[27mo[27mn[27m@[27m3[27m.[27m1[27m3[?1l>[?2004l
+]2;brew install python@3.13]1;brew[34m==>[0m [1mDownloading https://ghcr.io/v2/homebrew/core/python/3.13/manifests/3.13.2[0m
+Already downloaded: /Users/stefanward/Library/Caches/Homebrew/downloads/ed88e7b3fd6fee101e6c569740db52ea7364a7e3d9092a35d8375795a39c2592--python@3.13-3.13.2.bottle_manifest.json
+[32m==>[0m [1mFetching [32mpython@3.13[39m[0m
+[34m==>[0m [1mDownloading https://ghcr.io/v2/homebrew/core/python/3.13/blobs/sha256:166ed4ffa110e57196cade5512bd7f5d27ce5c2c386c8abd416b8fcf3f0e1683[0m
+Already downloaded: /Users/stefanward/Library/Caches/Homebrew/downloads/a160c4b7fc697c807657e6c30c2ac6cdda5516b7c0a986ba1dcececb739a3090--python@3.13--3.13.2.arm64_sequoia.bottle.tar.gz
+[34m==>[0m [1mPouring python@3.13--3.13.2.arm64_sequoia.bottle.tar.gz[0m
+[34m==>[0m [1m/opt/homebrew/Cellar/python@3.13/3.13.2/bin/python3.13 -Im ensurepip[0m
+[34m==>[0m [1m/opt/homebrew/Cellar/python@3.13/3.13.2/bin/python3.13 -Im pip install -v --no-index --upgrade --isolated --target=/opt/homebrew/lib/python3.1[0m
+[34m==>[0m [1mCaveats[0m
+Python is installed as
+  /opt/homebrew/bin/python3
+
+Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to
+`python3`, `python3-config`, `pip3` etc., respectively, are installed into
+  /opt/homebrew/opt/python@3.13/libexec/bin
+
+See: https://docs.brew.sh/Homebrew-and-Python
+[34m==>[0m [1mSummary[0m
+🍺  /opt/homebrew/Cellar/python@3.13/3.13.2: 3,274 files, 65.4MB
+[34m==>[0m [1mRunning `brew cleanup python@3.13`...[0m
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[7mexport PATH="$(brew --prefix python)/libexec/bin:$PATH"[27m[55D[27me[27mx[27mp[27mo[27mr[27mt[27m [27mP[27mA[27mT[27mH[27m=[27m"[27m$[27m([27mb[27mr[27me[27mw[27m [27m-[27m-[27mp[27mr[27me[27mf[27mi[27mx[27m [27mp[27my[27mt[27mh[27mo[27mn[27m)[27m/[27ml[27mi[27mb[27me[27mx[27me[27mc[27m/[27mb[27mi[27mn[27m:[27m$[27mP[27mA[27mT[27mH[27m"[?1l>[?2004l
+]2;export PATH="$(brew --prefix python)/libexec/bin:$PATH" ]1;export[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppip --help[?1l>[?2004l
+]2;pip --help]1;pip
+Usage:   
+  pip <command> [options]
+
+Commands:
+  install                     Install packages.
+  download                    Download packages.
+  uninstall                   Uninstall packages.
+  freeze                      Output installed packages in requirements format.
+  inspect                     Inspect the python environment.
+  list                        List installed packages.
+  show                        Show information about installed packages.
+  check                       Verify installed packages have compatible dependencies.
+  config                      Manage local and global configuration.
+  search                      Search PyPI for packages.
+  cache                       Inspect and manage pip's wheel cache.
+  index                       Inspect information available from package indexes.
+  wheel                       Build wheels from your requirements.
+  hash                        Compute hashes of package archives.
+  completion                  A helper command used for command completion.
+  debug                       Show information useful for debugging.
+  help                        Show help for commands.
+
+General Options:
+  -h, --help                  Show help.
+  --debug                     Let unhandled exceptions propagate outside the main subroutine, instead of logging them to stderr.
+  --isolated                  Run pip in an isolated mode, ignoring environment variables and user configuration.
+  --require-virtualenv        Allow pip to only run in a virtual environment; exit with an error otherwise.
+  --python <python>           Run pip with the specified Python interpreter.
+  -v, --verbose               Give more output. Option is additive, and can be used up to 3 times.
+  -V, --version               Show version and exit.
+  -q, --quiet                 Give less output. Option is additive, and can be used up to 3 times (corresponding to WARNING, ERROR, and CRITICAL
+                              logging levels).
+  --log <path>                Path to a verbose appending log.
+  --no-input                  Disable prompting for input.
+  --keyring-provider <keyring_provider>
+                              Enable the credential lookup via the keyring library if user input is allowed. Specify which mechanism to use
+                              [auto, disabled, import, subprocess]. (default: auto)
+  --proxy <proxy>             Specify a proxy in the form scheme://[user:passwd@]proxy.server:port.
+  --retries <retries>         Maximum number of retries each connection should attempt (default 5 times).
+  --timeout <sec>             Set the socket timeout (default 15 seconds).
+  --exists-action <action>    Default action when a path already exists: (s)witch, (i)gnore, (w)ipe, (b)ackup, (a)bort.
+  --trusted-host <hostname>   Mark this host or host:port pair as trusted, even though it does not have valid or any HTTPS.
+  --cert <path>               Path to PEM-encoded CA certificate bundle. If provided, overrides the default. See 'SSL Certificate Verification'
+                              in pip documentation for more information.
+  --client-cert <path>        Path to SSL client certificate, a single file containing the private key and the certificate in PEM format.
+  --cache-dir <dir>           Store the cache data in <dir>.
+  --no-cache-dir              Disable the cache.
+  --disable-pip-version-check
+                              Don't periodically check PyPI to determine whether a new version of pip is available for download. Implied with
+                              --no-index.
+  --no-color                  Suppress colored output.
+  --no-python-version-warning
+                              Silence deprecation warnings for upcoming unsupported Pythons.
+  --use-feature <feature>     Enable new functionality, that may be backward incompatible.
+  --use-deprecated <feature>  Enable deprecated functionality, that will be removed in the future.
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppwd p  ccd c  lls -la[?1l>[?2004l
+]2;ls -G -la]1;lstotal 732256
+drwxr-x---+  72 stefanward  primarygroup       2304 Mar 26 15:33 [1m[36m.[39;49m[0m
+drwxr-xr-x    6 root        admin               192 Mar 14 08:28 [1m[36m..[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup      14928 Mar 21 07:09 ..vimrc.un~
+-r--------    1 stefanward  primarygroup          7 Feb 11 06:16 .CFUserTextEncoding
+-rw-r--r--@   1 stefanward  primarygroup      32772 Mar 26 10:35 .DS_Store
+drwx------+  82 stefanward  primarygroup       2624 Mar 25 14:29 [1m[36m.Trash[39;49m[0m
+drwxr-xr-x    9 stefanward  primarygroup        288 Mar 19 19:33 [1m[36m.backup[39;49m[0m
+-rw-------    1 stefanward  primarygroup      18688 Mar 25 16:59 .bash_history
+-rw-------    1 stefanward  primarygroup      21486 Feb 12 16:20 .boto
+drwx------    3 stefanward  primarygroup         96 Mar 19 18:46 [1m[36m.cache[39;49m[0m
+drwx------    8 stefanward  primarygroup        256 Mar 21 20:18 [1m[36m.config[39;49m[0m
+drwx------    3 stefanward  primarygroup         96 Mar 17 08:04 [1m[36m.cups[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup        137 Feb 12 19:11 .gitconfig
+drwxr-xr-x    3 stefanward  primarygroup         96 Feb 12 09:24 [1m[36m.idlerc[39;49m[0m
+-rw-------    1 stefanward  primarygroup         20 Mar 21 17:43 .lesshst
+drwx------    5 stefanward  primarygroup        160 Mar 25 17:16 [1m[36m.local[39;49m[0m
+drwxr-xr-x   24 stefanward  primarygroup        768 Mar 21 15:12 [1m[36m.oh-my-zsh[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup        128 Mar 21 11:41 [1m[36m.omnissa[39;49m[0m
+drwxr-xr-x@   3 stefanward  primarygroup         96 Feb 11 08:42 [1m[36m.secureConnect[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup         10 Mar 21 15:12 .shell.pre-oh-my-zsh
+drwx------   16 stefanward  primarygroup        512 Mar 19 19:13 [1m[36m.ssh[39;49m[0m
+drwx------    4 stefanward  primarygroup        128 Feb 14 18:01 [1m[36m.sso[39;49m[0m
+drwxr-xr-x    5 stefanward  primarygroup        160 Feb 11 11:40 [1m[36m.swiftpm[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup        128 Mar 25 16:51 [1m[36m.terraform.d[39;49m[0m
+drwxr-xr-x@   6 stefanward  primarygroup        192 Mar 20 12:40 [1m[36m.thinkorswim[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup        343 Mar 21 06:31 .tmux.conf
+drwxr-xr-x    7 stefanward  primarygroup        224 Mar 25 23:10 [1m[36m.venv[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup         96 Mar 21 14:11 [1m[36m.vim[39;49m[0m
+-rw-------    1 stefanward  primarygroup      19063 Mar 26 15:20 .viminfo
+drwxr-xr-x    6 stefanward  primarygroup        192 Feb 15 15:28 [1m[36m.vscode[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup      49215 Mar 20 00:31 .zcompdump
+-rw-r--r--    1 stefanward  primarygroup      50937 Mar 23 04:13 .zcompdump-stefanward-mac-5.9
+-r--r--r--    1 stefanward  primarygroup     117576 Mar 23 04:13 .zcompdump-stefanward-mac-5.9.zwc
+-rw-------    1 stefanward  primarygroup      19904 Mar 26 15:33 .zsh_history
+drwx------    5 stefanward  primarygroup        160 Mar 20 15:12 [1m[36m.zsh_sessions[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup       3542 Mar 23 05:14 .zshrc
+-rw-r--r--    1 stefanward  primarygroup       2776 Mar 21 20:19 .zshrc.backup
+drwx------@   7 stefanward  primarygroup        224 Mar 23 19:53 [1m[36mApplications[39;49m[0m
+drwx------@   9 stefanward  primarygroup        288 Mar 20 23:17 [1m[36mDesktop[39;49m[0m
+drwx------@  20 stefanward  primarygroup        640 Mar 26 07:58 [1m[36mDocuments[39;49m[0m
+drwx------@  44 stefanward  primarygroup       1408 Mar 26 14:59 [1m[36mDownloads[39;49m[0m
+lrwx------    1 stefanward  primarygroup         72 Mar 26 07:58 [35mGoogle Drive[39;49m[0m -> /Users/stefanward/Library/CloudStorage/GoogleDrive-stefanward@google.com
+drwx------+  95 stefanward  primarygroup       3040 Mar 23 19:53 [1m[36mLibrary[39;49m[0m
+drwx------    3 stefanward  primarygroup         96 Feb 11 06:00 [1m[36mMovies[39;49m[0m
+drwx------+   5 stefanward  primarygroup        160 Feb 12 12:54 [1m[36mMusic[39;49m[0m
+drwx------+   5 stefanward  primarygroup        160 Feb 11 13:58 [1m[36mPictures[39;49m[0m
+drwxr-xr-x+   4 stefanward  primarygroup        128 Feb 11 06:00 [1m[36mPublic[39;49m[0m
+drwxr-xr-x@   4 stefanward  primarygroup        128 Feb 11 13:58 [1m[36mPycharmProjects[39;49m[0m
+drwxr-xr-x    6 stefanward  primarygroup        192 Mar 23 05:19 [1m[36mWorkspace[39;49m[0m
+-r--r--r--    1 stefanward  primarygroup       5922 Feb 11 09:36 backup
+drwxr-xr-x   11 stefanward  primarygroup        352 Mar 25 17:01 [1m[36mbin[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup         96 Feb 11 12:25 [1m[36mdisplaylink[39;49m[0m
+drwxr-xr-x  153 stefanward  primarygroup       4896 Mar 25 05:43 [1m[36mfucked[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup        128 Feb 11 13:58 [1m[36mgcp[39;49m[0m
+drwxr-xr-x@   7 stefanward  primarygroup        224 Mar 23 19:56 [1m[36mgitrepo[39;49m[0m
+-rw-r--r--@   1 stefanward  primarygroup  374435840 Mar 20 00:25 google-cloud-cli-darwin-arm.tar
+-rw-r--r--    1 stefanward  primarygroup          0 Mar 22 15:35 mac sc
+drwxr-xr-x    8 stefanward  primarygroup        256 Mar 26 10:35 [1m[36mmy-venv[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup        557 Mar 21 06:55 newvimrc
+-rw-r--r--    1 stefanward  primarygroup        877 Mar 22 15:27 ohmy Commands
+drwxr-xr-x    3 stefanward  primarygroup         96 Mar 25 17:21 [1m[36mpath[39;49m[0m
+drwxr-xr-x@   6 stefanward  primarygroup        192 Mar  9 05:02 [1m[36mprojects[39;49m[0m
+drwxr-xr-x@  11 stefanward  primarygroup        352 Mar 26 15:21 [1m[36mscripts[39;49m[0m
+drwxr-xr-x@  31 stefanward  primarygroup        992 Mar 17 14:32 [1m[36mthinkorswim[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup         96 Feb 16 13:29 [1m[36mtooling[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup      40106 Mar 21 20:13 typescript
+-rw-r--r--    1 root        primarygroup      11417 Mar 18 21:00 uninstall.sh
+-rw-r--r--    1 stefanward  primarygroup         99 Feb 16 13:05 usefulthings
+-rw-r--r--    1 stefanward  primarygroup        808 Mar 22 15:22 vim shortcuts
+-rw-r--r--    1 stefanward  primarygroup       1029 Mar 21 07:11 vimrc_example.vim
+-rw-r--r--    1 stefanward  primarygroup        557 Mar 21 07:15 vimrc~
+drwxr-xr-x   11 stefanward  primarygroup        352 Mar 23 19:42 [1m[36mwardo[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hmmkdir projects           m  ccd p[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd p[K[132Cv1.11.2[139D
+[J[1;36mPictures[0m/         [J[1;36mPublic[0m/           [J[1;36mPycharmProjects[0m/  [J[1;36mpath[0m/             [J[1;36mprojects[0m/       [J[A[0m[27m[24m[0m[2Ccd p[K[132Cv1.11.2[0m[139Dro[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd projects[1m/[0m[K[124Cv1.11.2[131D[0m [?1l>[?2004l
+]2;cd projects]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/projects]1;~/projects]7;file://stefanward-mac.roam.internal/Users/stefanward/projects\[0m[27m[24m[J[34mstefanward[00m in [34m~/projects[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mciti[39;49m[0m     [1m[36mclass[39;49m[0m    touchsss
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/projects]1;~/projects]7;file://stefanward-mac.roam.internal/Users/stefanward/projects\[0m[27m[24m[J[34mstefanward[00m in [34m~/projects[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccdc  lls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mAppsscripts[39;49m[0m [1m[36mciti[39;49m[0m        [1m[36mclass[39;49m[0m       [1m[36moh-my[39;49m[0m       [1m[36mpyscripts[39;49m[0m   touchsss
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/projects]1;~/projects]7;file://stefanward-mac.roam.internal/Users/stefanward/projects\[0m[27m[24m[J[34mstefanward[00m in [34m~/projects[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsl  ccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 732288
+drwxr-x---+  73 stefanward  primarygroup   2.3K Mar 26 17:17 [1m[36m.[39;49m[0m
+drwxr-xr-x    6 root        admin          192B Mar 14 08:28 [1m[36m..[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    15K Mar 21 07:09 ..vimrc.un~
+-r--------    1 stefanward  primarygroup     7B Feb 11 06:16 .CFUserTextEncoding
+-rw-r--r--@   1 stefanward  primarygroup    32K Mar 26 10:35 .DS_Store
+drwx------+  82 stefanward  primarygroup   2.6K Mar 25 14:29 [1m[36m.Trash[39;49m[0m
+drwxr-xr-x    9 stefanward  primarygroup   288B Mar 19 19:33 [1m[36m.backup[39;49m[0m
+-rw-------    1 stefanward  primarygroup    18K Mar 25 16:59 .bash_history
+-rw-------    1 stefanward  primarygroup    21K Feb 12 16:20 .boto
+drwx------    3 stefanward  primarygroup    96B Mar 19 18:46 [1m[36m.cache[39;49m[0m
+drwx------    8 stefanward  primarygroup   256B Mar 21 20:18 [1m[36m.config[39;49m[0m
+drwx------    3 stefanward  primarygroup    96B Mar 17 08:04 [1m[36m.cups[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   137B Feb 12 19:11 .gitconfig
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 12 09:24 [1m[36m.idlerc[39;49m[0m
+-rw-------    1 stefanward  primarygroup    20B Mar 21 17:43 .lesshst
+drwx------    5 stefanward  primarygroup   160B Mar 25 17:16 [1m[36m.local[39;49m[0m
+drwxr-xr-x   24 stefanward  primarygroup   768B Mar 21 15:12 [1m[36m.oh-my-zsh[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Mar 21 11:41 [1m[36m.omnissa[39;49m[0m
+drwxr-xr-x@   3 stefanward  primarygroup    96B Feb 11 08:42 [1m[36m.secureConnect[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    10B Mar 21 15:12 .shell.pre-oh-my-zsh
+drwx------   16 stefanward  primarygroup   512B Mar 19 19:13 [1m[36m.ssh[39;49m[0m
+drwx------    4 stefanward  primarygroup   128B Feb 14 18:01 [1m[36m.sso[39;49m[0m
+drwxr-xr-x    5 stefanward  primarygroup   160B Feb 11 11:40 [1m[36m.swiftpm[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Mar 25 16:51 [1m[36m.terraform.d[39;49m[0m
+drwxr-xr-x@   6 stefanward  primarygroup   192B Mar 20 12:40 [1m[36m.thinkorswim[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   343B Mar 21 06:31 .tmux.conf
+drwxr-xr-x    7 stefanward  primarygroup   224B Mar 25 23:10 [1m[36m.venv[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Mar 21 14:11 [1m[36m.vim[39;49m[0m
+-rw-------    1 stefanward  primarygroup    19K Mar 26 15:20 .viminfo
+drwxr-xr-x    6 stefanward  primarygroup   192B Feb 15 15:28 [1m[36m.vscode[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    48K Mar 20 00:31 .zcompdump
+-rw-r--r--    1 stefanward  primarygroup    50K Mar 23 04:13 .zcompdump-stefanward-mac-5.9
+-r--r--r--    1 stefanward  primarygroup   115K Mar 23 04:13 .zcompdump-stefanward-mac-5.9.zwc
+-rw-------    1 stefanward  primarygroup    20K Mar 26 17:17 .zsh_history
+drwx------    5 stefanward  primarygroup   160B Mar 20 15:12 [1m[36m.zsh_sessions[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   3.5K Mar 23 05:14 .zshrc
+-rw-r--r--    1 stefanward  primarygroup   2.7K Mar 21 20:19 .zshrc.backup
+-rw-r--r--    1 stefanward  primarygroup    12K Mar 26 17:17 .zshrc.swp
+drwx------@   7 stefanward  primarygroup   224B Mar 23 19:53 [1m[36mApplications[39;49m[0m
+drwx------@   9 stefanward  primarygroup   288B Mar 20 23:17 [1m[36mDesktop[39;49m[0m
+drwx------@  20 stefanward  primarygroup   640B Mar 26 07:58 [1m[36mDocuments[39;49m[0m
+drwx------@  44 stefanward  primarygroup   1.4K Mar 26 14:59 [1m[36mDownloads[39;49m[0m
+lrwx------    1 stefanward  primarygroup    72B Mar 26 07:58 [35mGoogle Drive[39;49m[0m -> /Users/stefanward/Library/CloudStorage/GoogleDrive-stefanward@google.com
+drwx------+  95 stefanward  primarygroup   3.0K Mar 23 19:53 [1m[36mLibrary[39;49m[0m
+drwx------    3 stefanward  primarygroup    96B Feb 11 06:00 [1m[36mMovies[39;49m[0m
+drwx------+   5 stefanward  primarygroup   160B Feb 12 12:54 [1m[36mMusic[39;49m[0m
+drwx------+   5 stefanward  primarygroup   160B Feb 11 13:58 [1m[36mPictures[39;49m[0m
+drwxr-xr-x+   4 stefanward  primarygroup   128B Feb 11 06:00 [1m[36mPublic[39;49m[0m
+drwxr-xr-x@   4 stefanward  primarygroup   128B Feb 11 13:58 [1m[36mPycharmProjects[39;49m[0m
+drwxr-xr-x    6 stefanward  primarygroup   192B Mar 23 05:19 [1m[36mWorkspace[39;49m[0m
+-r--r--r--    1 stefanward  primarygroup   5.8K Feb 11 09:36 backup
+drwxr-xr-x   11 stefanward  primarygroup   352B Mar 25 17:01 [1m[36mbin[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 11 12:25 [1m[36mdisplaylink[39;49m[0m
+drwxr-xr-x  153 stefanward  primarygroup   4.8K Mar 25 05:43 [1m[36mfucked[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Feb 11 13:58 [1m[36mgcp[39;49m[0m
+drwxr-xr-x@   7 stefanward  primarygroup   224B Mar 23 19:56 [1m[36mgitrepo[39;49m[0m
+-rw-r--r--@   1 stefanward  primarygroup   357M Mar 20 00:25 google-cloud-cli-darwin-arm.tar
+-rw-r--r--    1 stefanward  primarygroup     0B Mar 22 15:35 mac sc
+drwxr-xr-x    8 stefanward  primarygroup   256B Mar 26 10:35 [1m[36mmy-venv[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   557B Mar 21 06:55 newvimrc
+-rw-r--r--    1 stefanward  primarygroup   877B Mar 22 15:27 ohmy Commands
+drwxr-xr-x    3 stefanward  primarygroup    96B Mar 25 17:21 [1m[36mpath[39;49m[0m
+drwxr-xr-x@   9 stefanward  primarygroup   288B Mar 26 15:34 [1m[36mprojects[39;49m[0m
+drwxr-xr-x@   8 stefanward  primarygroup   256B Mar 26 15:34 [1m[36mscripts[39;49m[0m
+drwxr-xr-x@  31 stefanward  primarygroup   992B Mar 17 14:32 [1m[36mthinkorswim[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 16 13:29 [1m[36mtooling[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    39K Mar 21 20:13 typescript
+-rw-r--r--    1 root        primarygroup    11K Mar 18 21:00 uninstall.sh
+-rw-r--r--    1 stefanward  primarygroup    99B Feb 16 13:05 usefulthings
+-rw-r--r--    1 stefanward  primarygroup   808B Mar 22 15:22 vim shortcuts
+-rw-r--r--    1 stefanward  primarygroup   1.0K Mar 21 07:11 vimrc_example.vim
+-rw-r--r--    1 stefanward  primarygroup   557B Mar 21 07:15 vimrc~
+drwxr-xr-x   11 stefanward  primarygroup   352B Mar 23 19:42 [1m[36mwardo[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppyscripts[?1l>[?2004l
+]2;pyscripts]1;pyscriptszsh: command not found: pyscripts
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppwd[?1l>[?2004l
+]2;pwd]1;pwd/Users/stefanward
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hllsa[?1l>[?2004l
+]2;ls -G -lah]1;lsatotal 732288
+drwxr-x---+  73 stefanward  primarygroup   2.3K Mar 26 17:48 [1m[36m.[39;49m[0m
+drwxr-xr-x    6 root        admin          192B Mar 14 08:28 [1m[36m..[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    15K Mar 21 07:09 ..vimrc.un~
+-r--------    1 stefanward  primarygroup     7B Feb 11 06:16 .CFUserTextEncoding
+-rw-r--r--@   1 stefanward  primarygroup    32K Mar 26 10:35 .DS_Store
+drwx------+  82 stefanward  primarygroup   2.6K Mar 25 14:29 [1m[36m.Trash[39;49m[0m
+drwxr-xr-x    9 stefanward  primarygroup   288B Mar 19 19:33 [1m[36m.backup[39;49m[0m
+-rw-------    1 stefanward  primarygroup    18K Mar 25 16:59 .bash_history
+-rw-------    1 stefanward  primarygroup    21K Feb 12 16:20 .boto
+drwx------    3 stefanward  primarygroup    96B Mar 19 18:46 [1m[36m.cache[39;49m[0m
+drwx------    8 stefanward  primarygroup   256B Mar 21 20:18 [1m[36m.config[39;49m[0m
+drwx------    3 stefanward  primarygroup    96B Mar 17 08:04 [1m[36m.cups[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   137B Feb 12 19:11 .gitconfig
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 12 09:24 [1m[36m.idlerc[39;49m[0m
+-rw-------    1 stefanward  primarygroup    20B Mar 21 17:43 .lesshst
+drwx------    5 stefanward  primarygroup   160B Mar 25 17:16 [1m[36m.local[39;49m[0m
+drwxr-xr-x   24 stefanward  primarygroup   768B Mar 21 15:12 [1m[36m.oh-my-zsh[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Mar 21 11:41 [1m[36m.omnissa[39;49m[0m
+drwxr-xr-x@   3 stefanward  primarygroup    96B Feb 11 08:42 [1m[36m.secureConnect[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    10B Mar 21 15:12 .shell.pre-oh-my-zsh
+drwx------   16 stefanward  primarygroup   512B Mar 19 19:13 [1m[36m.ssh[39;49m[0m
+drwx------    4 stefanward  primarygroup   128B Feb 14 18:01 [1m[36m.sso[39;49m[0m
+drwxr-xr-x    5 stefanward  primarygroup   160B Feb 11 11:40 [1m[36m.swiftpm[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Mar 25 16:51 [1m[36m.terraform.d[39;49m[0m
+drwxr-xr-x@   6 stefanward  primarygroup   192B Mar 20 12:40 [1m[36m.thinkorswim[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   343B Mar 21 06:31 .tmux.conf
+drwxr-xr-x    7 stefanward  primarygroup   224B Mar 25 23:10 [1m[36m.venv[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Mar 21 14:11 [1m[36m.vim[39;49m[0m
+-rw-------    1 stefanward  primarygroup    19K Mar 26 15:20 .viminfo
+drwxr-xr-x    6 stefanward  primarygroup   192B Feb 15 15:28 [1m[36m.vscode[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    48K Mar 20 00:31 .zcompdump
+-rw-r--r--    1 stefanward  primarygroup    50K Mar 23 04:13 .zcompdump-stefanward-mac-5.9
+-r--r--r--    1 stefanward  primarygroup   115K Mar 23 04:13 .zcompdump-stefanward-mac-5.9.zwc
+-rw-------    1 stefanward  primarygroup    20K Mar 26 17:48 .zsh_history
+drwx------    5 stefanward  primarygroup   160B Mar 20 15:12 [1m[36m.zsh_sessions[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   3.5K Mar 23 05:14 .zshrc
+-rw-r--r--    1 stefanward  primarygroup   2.7K Mar 21 20:19 .zshrc.backup
+-rw-r--r--    1 stefanward  primarygroup    12K Mar 26 17:48 .zshrc.swp
+drwx------@   7 stefanward  primarygroup   224B Mar 23 19:53 [1m[36mApplications[39;49m[0m
+drwx------@   9 stefanward  primarygroup   288B Mar 20 23:17 [1m[36mDesktop[39;49m[0m
+drwx------@  20 stefanward  primarygroup   640B Mar 26 07:58 [1m[36mDocuments[39;49m[0m
+drwx------@  44 stefanward  primarygroup   1.4K Mar 26 14:59 [1m[36mDownloads[39;49m[0m
+lrwx------    1 stefanward  primarygroup    72B Mar 26 07:58 [35mGoogle Drive[39;49m[0m -> /Users/stefanward/Library/CloudStorage/GoogleDrive-stefanward@google.com
+drwx------+  95 stefanward  primarygroup   3.0K Mar 23 19:53 [1m[36mLibrary[39;49m[0m
+drwx------    3 stefanward  primarygroup    96B Feb 11 06:00 [1m[36mMovies[39;49m[0m
+drwx------+   5 stefanward  primarygroup   160B Feb 12 12:54 [1m[36mMusic[39;49m[0m
+drwx------+   5 stefanward  primarygroup   160B Feb 11 13:58 [1m[36mPictures[39;49m[0m
+drwxr-xr-x+   4 stefanward  primarygroup   128B Feb 11 06:00 [1m[36mPublic[39;49m[0m
+drwxr-xr-x@   4 stefanward  primarygroup   128B Feb 11 13:58 [1m[36mPycharmProjects[39;49m[0m
+drwxr-xr-x    6 stefanward  primarygroup   192B Mar 23 05:19 [1m[36mWorkspace[39;49m[0m
+-r--r--r--    1 stefanward  primarygroup   5.8K Feb 11 09:36 backup
+drwxr-xr-x   11 stefanward  primarygroup   352B Mar 25 17:01 [1m[36mbin[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 11 12:25 [1m[36mdisplaylink[39;49m[0m
+drwxr-xr-x  153 stefanward  primarygroup   4.8K Mar 25 05:43 [1m[36mfucked[39;49m[0m
+drwxr-xr-x    4 stefanward  primarygroup   128B Feb 11 13:58 [1m[36mgcp[39;49m[0m
+drwxr-xr-x@   7 stefanward  primarygroup   224B Mar 23 19:56 [1m[36mgitrepo[39;49m[0m
+-rw-r--r--@   1 stefanward  primarygroup   357M Mar 20 00:25 google-cloud-cli-darwin-arm.tar
+-rw-r--r--    1 stefanward  primarygroup     0B Mar 22 15:35 mac sc
+drwxr-xr-x    8 stefanward  primarygroup   256B Mar 26 10:35 [1m[36mmy-venv[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup   557B Mar 21 06:55 newvimrc
+-rw-r--r--    1 stefanward  primarygroup   877B Mar 22 15:27 ohmy Commands
+drwxr-xr-x    3 stefanward  primarygroup    96B Mar 25 17:21 [1m[36mpath[39;49m[0m
+drwxr-xr-x@   9 stefanward  primarygroup   288B Mar 26 15:34 [1m[36mprojects[39;49m[0m
+drwxr-xr-x@   8 stefanward  primarygroup   256B Mar 26 15:34 [1m[36mscripts[39;49m[0m
+drwxr-xr-x@  31 stefanward  primarygroup   992B Mar 17 14:32 [1m[36mthinkorswim[39;49m[0m
+drwxr-xr-x    3 stefanward  primarygroup    96B Feb 16 13:29 [1m[36mtooling[39;49m[0m
+-rw-r--r--    1 stefanward  primarygroup    39K Mar 21 20:13 typescript
+-rw-r--r--    1 root        primarygroup    11K Mar 18 21:00 uninstall.sh
+-rw-r--r--    1 stefanward  primarygroup    99B Feb 16 13:05 usefulthings
+-rw-r--r--    1 stefanward  primarygroup   808B Mar 22 15:22 vim shortcuts
+-rw-r--r--    1 stefanward  primarygroup   1.0K Mar 21 07:11 vimrc_example.vim
+-rw-r--r--    1 stefanward  primarygroup   557B Mar 21 07:15 vimrc~
+drwxr-xr-x   11 stefanward  primarygroup   352B Mar 23 19:42 [1m[36mwardo[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h[?1l>[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd o[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd o[K[132Cv1.11.2[139D
+[1;36mApplications[0m/     [1;36mDocuments[0m/        [35mGoogle\ Drive[0m@    [1;36mPycharmProjects[0m/  [1;36mgitrepo[0m/          [1;36mthinkorswim[0m/      [1;36mwardo[0m/                            
+[J[1;36mDesktop[0m/          [J[1;36mDownloads[0m/        [J[1;36mMovies[0m/           [J[1;36mWorkspace[0m/        [J[1;36mprojects[0m/         [J[1;36mtooling[0m/          [J                                [A[A[0m[27m[24m[0m[2Ccd o[K[132Cv1.11.2[0m[139Dh[?7l[33mwaiting...[39m[?7h[A
+[J[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd oh[K[131Cv1.11.2[138D-[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd oh-[K[130Cv1.11.2[137Dmy[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd oh-my[K[128Cv1.11.2[135D     c  ccd .o[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd .o[K[131Cv1.11.2[138D
+[J[1;36m.oh-my-zsh[0m/  [J[1;36m.omnissa[0m/  [J[A[0m[27m[24m[0m[2Ccd .o[K[131Cv1.11.2[0m[138Dh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd .oh-my-zsh[1m/[0m[K[122Cv1.11.2[129D[0m [?1l>[?2004l
+]2;cd .oh-my-zsh]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/.oh-my-zsh]1;~/.oh-my-zsh]7;file://stefanward-mac.roam.internal/Users/stefanward/.oh-my-zsh\[0m[27m[24m[J[34mstefanward[00m in [34m~/.oh-my-zsh[0m[00m([31m5d11h1m[00m|[35mdetached-head[00m)
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;lsCODE_OF_CONDUCT.md LICENSE.txt        SECURITY.md        [1m[36mcustom[39;49m[0m             [1m[36mlog[39;49m[0m                [1m[36mplugins[39;49m[0m            [1m[36mthemes[39;49m[0m
+CONTRIBUTING.md    README.md          [1m[36mcache[39;49m[0m              [1m[36mlib[39;49m[0m                oh-my-zsh.sh       [1m[36mtemplates[39;49m[0m          [1m[36mtools[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/.oh-my-zsh]1;~/.oh-my-zsh]7;file://stefanward-mac.roam.internal/Users/stefanward/.oh-my-zsh\[0m[27m[24m[J[34mstefanward[00m in [34m~/.oh-my-zsh[0m[00m([31m5d11h1m[00m|[35mdetached-head[00m)
+$ [K[136Cv1.11.2[143D[?1h=[?2004hi vvi oh[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~/.oh-my-zsh[0m[00m([31m5d11h1m[00m|[35mdetached-head[00m)
+$ vi oh-my-zsh.sh[1m [0m[K[120Cv1.11.2[127D[0m [?1l>[?2004l
+]2;vi oh-my-zsh.sh]1;vi[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"oh-my-zsh.sh" 234L, 7472B[2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[1;1H# ANSI formatting function (\033[<code>m)
+# 0: reset, 1: bold, 4: underline, 22: no bold, 24: no underline, 31: red, 33: yellow[2;86H[K[3;1Homz_f() {[3;10H[K[4;3H[ $# -gt 0 ] || return
+  IFS=";" printf "\033[%sm" $*
+}
+# If stdout is not a terminal ignore all formatting
+[ -t 1 ] || omz_f() { :; }
+
+# Protect against non-zsh execution of Oh My Zsh (use POSIX syntax here)
+[ -n "$ZSH_VERSION" ] || {
+  omz_ptree() {
+    # Get process tree of the current process
+    pid=$$; pids="$pid"
+    while [ ${pid-0} -ne 1 ] && ppid=$(ps -e -o pid,ppid | awk "\$1 == $pid { print \$2 }"); do[16;7Hpids="$pids $pid"; pid=$ppid
+    done[19;5H# Show process tree
+    case "$(uname)" in
+    Linux) ps -o ppid,pid,command -f -p $pids 2>/dev/null ;;
+    Darwin|*) ps -o ppid,pid,command -p $pids 2>/dev/null ;;
+    esac[25;5H# If ps command failed, try Busybox ps
+    [ $? -eq 0 ] || ps -o ppid,pid,comm | awk "NR == 1 || index(\"$pids\", \$2) != 0"
+  }
+
+  {
+    shell=$(ps -o pid,comm | awk "\$1 == $$ { print \$2 }")
+    printf "$(omz_f 1 31)Error:$(omz_f 22) Oh My Zsh can't be loaded from: $(omz_f 1)${shell}$(omz_f 22). "
+    printf "You need to run $(omz_f 1)zsh$(omz_f 22) instead.$(omz_f 0)\n"
+    printf "$(omz_f 33)Here's the process tree:$(omz_f 22)\n\n"
+    omz_ptree
+    printf "$(omz_f 0)\n"
+  } >&2
+
+  return 1
+}[1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\
+
+
+
+[?25l[3;9H[46m{
+
+
+}[?25h[?25l[m[3;9H{
+
+
+}
+[?25h[?25l
+[46m[[m -t 1 [46m][?25h[?25l[m[ -t 1 ]
+[?25h
+[?25l
+[46m[[19C][?25h[?25l[m[[19C]
+[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l[11;26H[46m{[39;1H}[?25h[?25l[m[11;26H{[39;1H}
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Check if in emulation mode, if so early return[41;1H[K[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# https://github.com/ohmyzsh/ohmyzsh/issues/11686[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[46m[[m[ "$(emulate)" = zsh ][46m][m || {[?25h[?25l[1;40r[40;1H
+[1;41r[39;1H[[22C]
+  printf "$(omz_f 1 31)Error:$(omz_f 22) Oh My Zsh can't be loaded in \`$(emulate)\` emulation mode.$(omz_f 0)\n" >&2[?25h[?25l[1;40r[40;1H
+[1;41r[40;3Hreturn 1[?25h[?25l[1;40r[40;1H
+[1;41r[37;29H[46m{
+
+
+}[?25h[?25l[1;40r[m[40;1H
+[1;41r[36;29H{
+
+
+}
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hunset -f omz_f[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# If ZSH is not defined, use the current script's directory.[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[46m[[m[ -n "$ZSH" ][46m][m || export ZSH="${${(%):-%x}:a:h}"[?25h[?25l[1;40r[40;1H
+[1;41r[39;1H[[13C]
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Set ZSH_CUSTOM to the path where your custom config files[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# and plugins exists, or else we will use the default custom/[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[46m[[m[ -n "$ZSH_CUSTOM" ][46m][m || ZSH_CUSTOM="$ZSH/custom"[?25h[?25l[1;40r[40;1H
+[1;41r[39;1H[[20C]
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Set ZSH_CACHE_DIR to the path where cache files should be created[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# or else we will use the default cache/[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[46m[[m[ -n "$ZSH_CACHE_DIR" ][46m][m || ZSH_CACHE_DIR="$ZSH/cache"[?25h[?25l[1;40r[40;1H
+[1;41r[39;1H[[23C]
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Make sure $ZSH_CACHE_DIR is writable, otherwise use a directory in $HOME[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hif [[ ! -w "$ZSH_CACHE_DIR" ]]; then[?25h[?25l[1;40r[40;1H
+[1;41r[40;3HZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/oh-my-zsh"[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hfi[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Create cache and completions dir and add to $fpath[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hmkdir -p "$ZSH_CACHE_DIR/completions"[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[46m([m( ${fpath[(Ie)$ZSH_CACHE_DIR/completions]} )[46m)[m || fpath=("$ZSH_CACHE_DIR/completions" $fpath)[?25h[?25l[1;40r[40;1H
+[1;41r[39;1H([44C)
+[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Check for updates on initial load...[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hsource "$ZSH/tools/check_for_upgrade.sh"[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Initializes Oh My Zsh[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# add a function path[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hfpath=($ZSH/{functions,completions} $ZSH_CUSTOM/{functions,completions} $fpath)[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H# Load all stock functions (from $fpath files) called below.[?25h[?25l[1;40r[40;1H
+[1;41r[40;1Hautoload -U compaudit compinit zrecompile[?25h[?25l[1;40r[40;1H
+[1;41r[40;1H[?25h[?25l[1;40r[40;1H
+[1;41r[40;1His_plugin() {[?25h[?25l[1;40r[40;1H
+[1;41r[40;3Hlocal base_dir=$1[?25h[?25l[1;40r[40;1H
+[1;41r[40;3Hlocal name=$2[?25h[?25l[1;40r[40;1H
+[1;41r[40;3Hbuiltin test -f $base_dir/plugins/$name/$name.plugin.zsh \[?25h[?25l
+:[?25hq[?25l[?2004l[>4;m[23;2t[23;1t[41;1H[K[41;1H[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/.oh-my-zsh]1;~/.oh-my-zsh]7;file://stefanward-mac.roam.internal/Users/stefanward/.oh-my-zsh\[0m[27m[24m[J[34mstefanward[00m in [34m~/.oh-my-zsh[0m[00m([31m5d11h2m[00m|[35mdetached-head[00m)
+$ [K[136Cv1.11.2[143D[?1h=[?2004hw ppwd[?1l>[?2004l
+]2;pwd]1;pwd/Users/stefanward/.oh-my-zsh
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/.oh-my-zsh]1;~/.oh-my-zsh]7;file://stefanward-mac.roam.internal/Users/stefanward/.oh-my-zsh\[0m[27m[24m[J[34mstefanward[00m in [34m~/.oh-my-zsh[0m[00m([31m5d11h2m[00m|[35mdetached-head[00m)
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd ..[?1l>[?2004l
+]2;cd ..]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mApplications[39;49m[0m                    [1m[36mPublic[39;49m[0m                          google-cloud-cli-darwin-arm.tar [1m[36mtooling[39;49m[0m
+[1m[36mDesktop[39;49m[0m                         [1m[36mPycharmProjects[39;49m[0m                 mac sc                          typescript
+[1m[36mDocuments[39;49m[0m                       [1m[36mWorkspace[39;49m[0m                       [1m[36mmy-venv[39;49m[0m                         uninstall.sh
+[1m[36mDownloads[39;49m[0m                       backup                          newvimrc                        usefulthings
+[35mGoogle Drive[39;49m[0m                    [1m[36mbin[39;49m[0m                             ohmy Commands                   vim shortcuts
+[1m[36mLibrary[39;49m[0m                         [1m[36mdisplaylink[39;49m[0m                     [1m[36mpath[39;49m[0m                            vimrc_example.vim
+[1m[36mMovies[39;49m[0m                          [1m[36mfucked[39;49m[0m                          [1m[36mprojects[39;49m[0m                        vimrc~
+[1m[36mMusic[39;49m[0m                           [1m[36mgcp[39;49m[0m                             [1m[36mscripts[39;49m[0m                         [1m[36mwardo[39;49m[0m
+[1m[36mPictures[39;49m[0m                        [1m[36mgitrepo[39;49m[0m                         [1m[36mthinkorswim[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~]1;~]7;file://stefanward-mac.roam.internal/Users/stefanward\[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hccd b[?7l[33mwaiting...[39m[?7h[A[0m[27m[24m[J[34mstefanward[00m in [34m~[0m[00m
+$ cd bin[1m/[0m[K[129Cv1.11.2[136D[0m [?1l>[?2004l
+]2;cd bin]1;cd[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/bin]1;~/bin]7;file://stefanward-mac.roam.internal/Users/stefanward/bin\[0m[27m[24m[J[34mstefanward[00m in [34m~/bin[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hlls[?1l>[?2004l
+]2;ls -G]1;ls[1m[36mcolor-schemes[39;49m[0m    [1m[36mexe[39;49m[0m              [1m[36mgoogle-cloud-sdk[39;49m[0m [31miterm-profile.sh[39;49m[0m [31mlogin.sh[39;49m[0m         [1m[36mslwardo[39;49m[0m          [31mssh-screen[39;49m[0m       [31mssh-tmux[39;49m[0m
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/bin]1;~/bin]7;file://stefanward-mac.roam.internal/Users/stefanward/bin\[0m[27m[24m[J[34mstefanward[00m in [34m~/bin[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hvvi setpipODD D D D D D D D mD DsDtDD eDtDpDiDpD D[1C [?1l>[?2004l
+]2;vim setpip]1;vim[?1049h[>4;2m[?1h=[?2004h[?1004h[1;41r[?12h[?12l[22;2t[22;1t[27m[23m[29m[m[H[2J[?25l[41;1H"setpip" [New][2;1H▽[6n[2;1H  [3;1HPzz\[0%m[6n[3;1H           [1;1H[>c]10;?]11;?[2;1H[94m~                                                                                                                                                 [3;1H~                                                                                                                                                 [4;1H~                                                                                                                                                 [5;1H~                                                                                                                                                 [6;1H~                                                                                                                                                 [7;1H~                                                                                                                                                 [8;1H~                                                                                                                                                 [9;1H~                                                                                                                                                 [10;1H~                                                                                                                                                 [11;1H~                                                                                                                                                 [12;1H~                                                                                                                                                 [13;1H~                                                                                                                                                 [14;1H~                                                                                                                                                 [15;1H~                                                                                                                                                 [16;1H~                                                                                                                                                 [17;1H~                                                                                                                                                 [18;1H~                                                                                                                                                 [19;1H~                                                                                                                                                 [20;1H~                                                                                                                                                 [21;1H~                                                                                                                                                 [22;1H~                                                                                                                                                 [23;1H~                                                                                                                                                 [24;1H~                                                                                                                                                 [25;1H~                                                                                                                                                 [26;1H~                                                                                                                                                 [27;1H~                                                                                                                                                 [28;1H~                                                                                                                                                 [29;1H~                                                                                                                                                 [30;1H~                                                                                                                                                 [31;1H~                                                                                                                                                 [32;1H~                                                                                                                                                 [33;1H~                                                                                                                                                 [34;1H~                                                                                                                                                 [35;1H~                                                                                                                                                 [36;1H~                                                                                                                                                 [37;1H~                                                                                                                                                 [38;1H~                                                                                                                                                 [39;1H~                                                                                                                                                 [40;1H~                                                                                                                                                 [1;1H[?25h[?4mP+q436f\P+q6b75\P+q6b64\P+q6b72\P+q6b6c\P+q2332\P+q2334\P+q2569\P+q2a37\P+q6b31\P$q q\[?12$pP+q6b32\P+q6b33\P+q6b34\P+q6b35\P+q6b36\P+q6b37\P+q6b38\P+q6b39\P+q6b3b\P+q4631\P+q4632\P+q2531\P+q2638\P+q6b62\P+q6b49\P+q6b44\P+q6b68\P+q4037\P+q6b50\P+q6b4e\P+q4b31\P+q4b33\P+q4b34\P+q4b35\P+q6b42\P+q5053\P+q5045\[?25l[m[41;1H[1m-- INSERT --[m[41;13H[K[1;1H[?25h[?25lpython -m venv ./env[?25h[?25l[2;1H[K[2;1H[?25h[?25lsource ./env/bin/activate[?25h[41;1H[K[2;25H[?25l[?25h[?25l[41;1H:[?25hwq[?25l[?2004l[>4;m"setpip" [New] 2L, 47B written[23;2t[23;1t
+[?1004l[?2004l[?1l>[?1049l[?25h[>4;m[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/bin]1;~/bin]7;file://stefanward-mac.roam.internal/Users/stefanward/bin\[0m[27m[24m[J[34mstefanward[00m in [34m~/bin[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004hppwd[?1l>[?2004l
+]2;pwd]1;pwd/Users/stefanward/bin
+[1m[7m%[27m[1m[0m                                                                                                                                                  ]2;stefanward@stefanward-mac:~/bin]1;~/bin]7;file://stefanward-mac.roam.internal/Users/stefanward/bin\[0m[27m[24m[J[34mstefanward[00m in [34m~/bin[0m[00m
+$ [K[136Cv1.11.2[143D[?1h=[?2004h

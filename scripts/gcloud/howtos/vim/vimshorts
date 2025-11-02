@@ -1,0 +1,27 @@
+
+
+
+
+
+d		Delete									R	Enter Replace mode
+y		Yank (copy)								u	Undo changes
+c		Change (delete then insert)				a	Append
+x		Delete character						A	Append from end of line
+dd		Delete line (Cut)						i	Insert
+yy		Yank line (Copy)						o	Next line
+p		Paste									O	Previous line
+P		Paste before							fc	Go forward to character c
+s		Delete char and insert					Fc	Go backward to character c
+S		Delete line and insert					gg	First line
+C		Delete until end of 					G	Last line
+			line and insert	
+dd		(repeat the letter) 					>	Indent right
+			Delete current line
+dw		Delete to next word						<	Indent left
+db		Delete to beginning						"="	Autoindent
+			 of word
+2dd		Delete 2 lines							g~	Swap case
+dip		Delete a text object					gU	Uppercase
+		 (inside paragraph)		
+d		Delete selection						gu	Lowercase
+	

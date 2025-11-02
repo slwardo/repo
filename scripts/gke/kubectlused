@@ -1,0 +1,89 @@
+kubectlused
+**Instructions:** Please replace all placeholders like `<POD_NAME>`, `<NAMESPACE>`, `<PORT>`, `<NODE_NAME>`, and `<CONTAINER_NAME>` with the actual values specific to the failing scrape target *before* running each command.
+
+---
+
+**1. Gather Initial Information (No `kubectl` Needed)**
+
+* From your monitoring system, identify:
+    * `<POD_NAME>` (e.g., `netd-tkjlg`)
+    * `<NAMESPACE>` (e.g., `kube-system`)
+    * `<TARGET_IP>` (e.g., `10.64.0.2`)
+    * `<PORT>` (e.g., `10231`)
+
+**2. Check Pod Status & Location**
+
+* Command:
+    ```bash
+    kubectl get pod <POD_NAME> -n <NAMESPACE> -o wide
+    ```
+* What to Look For: Note the `STATUS` (should be `Running`), the `IP` (this is the Pod IP), and the `NODE` name. Save the Node name as `<NODE_NAME>`.
+
+**3. Check if Pod Uses Host Network**
+
+* Command:
+    ```bash
+    kubectl get pod <POD_NAME> -n <NAMESPACE> -o yaml | grep hostNetwork
+    ```
+* What to Look For: See if the output is `hostNetwork: true`.
+
+**4. Determine Correct Node IP (Only if Step 3 showed `hostNetwork: true`)**
+
+* Command:
+    ```bash
+    kubectl get node <NODE_NAME> -o wide
+    ```
+    *(Use the `<NODE_NAME>` you noted in Step 2)*
+* What to Look For: Note the `INTERNAL-IP`. This is the correct IP address the scrape should target if `hostNetwork: true`.
+
+**5. Compare Target IP vs. Correct IP (No `kubectl` Needed)**
+
+* Compare the `<TARGET_IP>` (from Step 1) with the correct IP identified:
+    * Node `INTERNAL-IP` (from Step 4) if `hostNetwork: true`.
+    * Pod `IP` (from Step 2) if `hostNetwork: false` or not set.
+* **If they are different, you've likely found the issue.** The scrape configuration needs updating.
+* **If they are the same, continue.**
+
+**6. Check How the Pod is Listening**
+
+* **a) Find Container Name:**
+    ```bash
+    kubectl describe pod <POD_NAME> -n <NAMESPACE>
+    ```
+    * What to Look For: Under the `Containers:` section, find the name of the main container(s). Save the relevant name as `<CONTAINER_NAME>`.
+
+* **b) Check Logs for Listening Address:**
+    ```bash
+    kubectl logs <POD_NAME> -n <NAMESPACE> -c <CONTAINER_NAME>
+    ```
+    * What to Look For: Search the logs for lines containing "Listening on", especially if it mentions `localhost` or `127.0.0.1`. Also look for configuration flags like `--metrics-addr=` or `--listen-address=`.
+
+* **c) Try Checking Network Ports Inside Pod (Optional - May Fail):**
+    * Attempt 1 (using `ss`):
+        ```bash
+        kubectl exec <POD_NAME> -n <NAMESPACE> -c <CONTAINER_NAME> -- ss -tulnp
+        ```
+    * Attempt 2 (using `netstat` - if `ss` failed):
+        ```bash
+        kubectl exec <POD_NAME> -n <NAMESPACE> -c <CONTAINER_NAME> -- netstat -tulnp
+        ```
+    * What to Look For: If the commands work, look for your specific `<PORT>` in the output. Check the "Local Address" column. Does it show `127.0.0.1:<PORT>` or `localhost:<PORT>`?
+
+**7. Interpret Listening Address (No `kubectl` Needed)**
+
+* Based on Step 6 (logs or `exec` output):
+    * If you found evidence the pod is listening on `localhost:<PORT>` or `127.0.0.1:<PORT>`, **this is the likely cause of the connection refused error.**
+    * If the pod seems to be listening on `0.0.0.0:<PORT>`, `*:<PORT>`, `:::<PORT>`, or the specific Node/Pod IP, continue.
+
+**8. Check for Network Policies**
+
+* Command:
+    ```bash
+    kubectl get networkpolicy -n <NAMESPACE>
+    ```
+* What to Look For: See if any policies are listed. If yes, they *might* be involved, but this requires deeper analysis.
+
+---
+
+By running these commands and observing the output, the customer should be able to determine if the scrape is failing due to targeting the wrong IP address or because the application inside the pod is only listening on `localhost` for that specific port.
+

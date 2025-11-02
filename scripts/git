@@ -1,0 +1,79 @@
+git
+
+
+org - stefanward.altostrat.com
+org-id - 583397684805
+billing account id - 0178F8-16FCDB-49D6F5
+argolis-gcp-billing-admin@twosync.google.com
+
+
+bootstrap id - bootstrap-474001
+bootup id - bootup-474002
+
+learntfbucket
+
+cloudbuild-terraform-sa@bootstrap-474001.iam.gserviceaccount.com
+
+username is slwardo
+
+
+ssh-keygen -t rsa -b 4096 -C "stefanward@google.com" -f ~/.ssh/id_rsa
+
+ssh-keygen -t rsa -b 4096 -C "stefan.ward@forgedfiber37.com" -f ~/.ssh/id_rsa_ff37
+
+Host ff37
+  HostName github.com
+  IdentityFile ~/.ssh/[id_rsa_ff37, not .pub]
+  IdentitiesOnly yes
+
+Host learn
+  HostName github.com
+  IdentityFile ~/.ssh/[id_rsa_learn, not .pub]
+  IdentitiesOnly yes
+
+
+
+git clone git@ff37:FF37-01/starburst-gcp-foundations.git
+
+git remote rename origin ff37
+
+git remote rename origin learn
+
+ ##clone a dir
+ git clone git@github.com:learn/starburst-gcp-foundations.git
+
+ 
+ git@github.com:FF37-01/starburst-gcp-application-foundations.git
+
+
+git clone git@github.com:slwardo/learn.git
+
+
+git remote -v
+
+git remote set-url learn https://github.com/slwardo/learn.git
+
+
+git remote set-url learn  https://github.com/adminalto/playground.git
+
+git push -u origin --all
+
+# Permission to access the Terraform state bucket
+gcloud storage buckets add-iam-policy-binding gs://learntfbucket \
+  --member="serviceAccount:${SA_EMAIL}" \
+  --role="roles/storage.objectAdmin"
+
+# Permission for Cloud Build to write logs
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+  --member="serviceAccount:${SA_EMAIL}" \
+  --role="roles/logging.logWriter"
+
+
+  59986742499@cloudbuild.gserviceaccount.com
+
+PN=$(gcloud projects describe bootup-474002 --format="value(projectNumber)")
+CLOUD_BUILD_SERVICE_AGENT="service-${PN}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+
+gcloud projects add-iam-policy-binding bootup-474002 \
+  --member="serviceAccount:service-${PN}@gcp-sa-cloudbuild.iam.gserviceaccount.com" \
+  --role="roles/secretmanager.admin"

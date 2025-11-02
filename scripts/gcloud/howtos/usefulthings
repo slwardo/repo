@@ -1,0 +1,15 @@
+
+
+
+
+
+
+
+
+alias listalias='cat $HOME/bin/exe/aliaslist'
+
+
+
+
+
+cloudssh servername    #for gce instance

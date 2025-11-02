@@ -1,0 +1,312 @@
+pwd
+lsa
+ls -l
+ls -la
+vi .bash_profile
+s
+vi .bash_profile
+kill -9 17840
+vi .bash_profile
+vi .bash_profile
+vi .bash_profile
+ls -a
+more .bash_profile.swp
+cd /
+pwd
+ls
+cd usr
+ls
+cd bin
+ls
+cd 
+ls
+cd ..
+ls
+cd ..
+ls
+cd bin
+ls
+cd zsh
+more zsh
+cd
+ls
+cd scripts
+ls
+cd bashfiles
+ls
+more bask_profile.old
+ls
+vi bask_profile.old
+mv bask_profile.old .bash_proflie2
+ls
+cp .bash_proflie2 ~
+ls
+more bashrc
+cd
+ls
+ls -la
+mv .bash_profile .bash_profileold
+mv .bash_profile2 .bash_profile
+mv .bash_proflie2 .bash_profile
+s
+source .bash_profile
+vi .bash_profile
+rm .bash_profile.swp
+vi .bash_profile
+s
+vi .bash_profile
+s
+vi .bash_profile
+s
+vi .bash_profile
+pwd
+ls -la
+mv .bash* scripts
+ls
+ls -la
+exit
+ls -la
+sudo mule install fish-shell
+chsh -s /usr/local/bin/fish
+ls -la
+cd /usr/bin
+ls
+ls osa
+ls pla
+ls -la
+cat /etc/debian_chroot
+ls -la
+vi .bash_profile
+s
+vi .bash_profile
+s
+source .bash_profile
+vi .bash_profile
+ls
+pwdd
+pwd
+ls
+cd scripts
+ls
+ls -l
+cd ..
+ls
+ls -la
+ls -la
+more backup
+ls
+ls -l
+pwd
+ls
+pwd
+ls
+ls -la
+vi .bash_profile
+vi .bash_profile
+source .bash_profile
+vi .bash_profile
+source .bash_profile
+echo "cd to "\"$currFolderPath\"""
+vi .bash_profile
+pwd
+vi .bash_prfile
+vi .bash_profile
+source .bash_profile
+pw
+ls
+ls 
+cd scripts
+ls
+cd bashfiles
+ls
+ls -la
+more .bash_proflie2
+vi .bash_profile
+pwd
+cd
+pwd
+vi .bash_profile
+s
+source .bash_profile
+source .bash_profile
+ls -lrt
+ls -la
+mv .bash_profile.sh .bash_profile
+source .bash_profile
+vi .bash_profile
+source .bash_profile
+vi .bash_profile
+vi .bash_profile
+source .bash_profile
+echo HOST
+ks
+ls
+path
+source .bash_profile
+path
+path
+path
+pwd
+ls -la
+path
+ls
+pwd
+vi .zshenv
+vi .zshrc
+vi .zshrc
+source .zshenv
+path
+vi .zshrc
+path
+vi .zshenv
+source .zshenv
+ls
+pwd
+lsa
+l;
+ll
+cd .backup
+vi bash_profile-202502161436.backup
+ls -FGlAhp
+ls -FGlAhpr
+lr
+cd 
+lr
+cd
+pwd
+cd
+ls
+pwd
+cd scripts
+pwd
+cd /usr
+cd scripts
+cd
+vi .zshrc
+cp .zshrc .zshrc.bak
+rm .zshrc
+vi .zshrc
+source .zshenv
+cd /
+cd (scripts)
+cd 
+pwd
+cd /
+cd scripts
+scripts
+llr
+pwd
+cd 
+ls -la
+llr
+path
+ls -la
+vi .zshrc
+vi .zshrc
+root
+pwd
+cd
+vi .zshrc
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+root
+scripts
+vi .zshenv
+cd
+vi .zshenv
+source .zshenv
+scripts
+cd bashbu
+cd /usr/
+ls
+cd lib
+scripts
+ls
+llr
+mv bashfiles ~/scripts/bashbu
+cd bashbu
+ls
+cd ..
+ls
+llr
+mv .bash_* bashbu
+llr
+cd zsh
+ls
+cp ~/.zshenv zshenv
+llr
+cp ~/.zshenv zshenv
+llr
+cp ~/.zshrc zshrc
+llr
+cd ..
+cd ..
+ls
+vi .zshenv
+source .zshenv
+pwd
+cd scripts
+cd ..
+vi .zshenv
+source .zshenv
+vi .zshenv
+source .zshenv
+scripts
+cd 
+cp .zshenv scripts/zsh/zshenv
+cd .zshrc
+ls
+vi .zshenv
+lla
+ls -la
+pwd
+vi .zshenv
+source .zshenv
+llr
+path
+pwd
+ls -lrt
+ls -la
+chmod 666 .zsh*
+ls -la
+ls
+llr
+rm .bash_profile
+echo $PS1
+exit
+cd scripts/zsh
+more zshenv
+vi zshenv
+cp zshenv ~/.zshenv
+echo $PS1
+ls -la
+vi .zshenv
+vi .zshenv
+ls
+cp .zshenv .zshenv.tmp
+path
+source .zshenv
+pwd
+llr
+mv .zshenv .zshenvbu
+mv .zshenv.tmp .zshenv
+source .zshenv
+/Users/stefanward/bin/login.sh
+pwd
+ls
+cd bin
+loging.sh
+vi login.sh
+pwd
+vi login.sh
+chmod 666 login.sh

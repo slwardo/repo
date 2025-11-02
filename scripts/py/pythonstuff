@@ -1,0 +1,72 @@
+/Users/stefanward/.config/gcloud/application_default_credentials.json
+
+
+
+brew install python@3.13
+
+### SSH stuff
+
+gcert in mac terminal2
+
+ssh slwardo-01.c.googlers.com
+
+#for all new projects run
+envbuild
+python3.13 -m venv venv
+source venv/bin/activate
+
+#to start envbuild
+envstart 
+source venv/bin/activate
+
+deactivate
+
+pip install google-api-python-client google-auth google-auth-httplib2 google-auth-oauthlib
+
+
+location of creditials
+/Users/stefanward/.config/gcloud/application_default_credentials.json
+
+PS1="\u@\h:\n\w\n$ "
+
+PS1="\u@\h:\n\w\n$ "
+
+PS1="\u@\h:\n\w\n$ "
+PS1="\u@\h:\n\w\n$ "
+
+
+Amrita Bora's Meeting ID : 254 564 9922 Passcode : 643585; https://citi.zoom.us/j/2545649922?pwd=bkl6WFNLQ1BJZDFsYUJkZEo4OHBGdz09&omn=91757109950
+
+\]0;~\a\
+stefanward@slwardo-01 ~\
+%
+
+
+PROMPT='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+PROMPT="%F{green}%n@%m %f%F{yellow}%~%f
+%# "
+PROMPT='\]0;%~\a%f\
+%F{green}%n@%m %f%F{yellow}%~%f\
+%# '
+
+
+
+export PROMPT='\]0;%~\a%f\
+%F{green}%n@%m %f%F{yellow}%~%f\
+%# '
+
+
+curl -fsSLO https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh
+/bin/bash uninstall.sh --path /google/home/stefanward
+
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/work/gitrepo gitrepo
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/work/projects projects
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/work/scripts scripts
+
+
+
+python3 5.py --start_date 2025-05-10
+
+python3 pstoremetricsv2.py --project_id PROJECT_ID --instance_id INSTANCE_ID --start_date START_DATE [--end_date END_DATE]
+
+roject
