@@ -1,0 +1,133 @@
+
+testuser
+buildownerfb2025
+
+11/8/1939
+
+buildownerfb2025@gmail.com
+1050163895915 userid
+owner stefanward
+
+fullbuildfunbus
+fullbuildfunbus.joonix.net
+32341657713 - Orgid
+
+admin
+funbusdriver@fullbuildfunbus.joonix.net
+chickenR0ckL4v4
+
+google-site-verification=l8hxcpOuvMQAnNhyqpP0aiZbV7-Cmf-xLqyoiBJPLUE
+
+
+https://admin-dev.corp.google.com/ac/home
+
+http://console.cloud.google.com
+
+
+
+builder1@fullbuildfunbus.joonix.net
+
+gcloud projects create  --organization=32341657713
+
+Submit a Changelist (CL) to Add Your Project to the Billing Account by editing this billing_associations.yaml (quick access via go/pso-billing) file.
+
+The structure of a billing_associations.yaml (https://source.corp.google.com/piper///depot/google3/configs/cloud/gong/org_hierarchy/google.com/billing_accounts.dir/Tech_Infra_Cloud/Operations/billing_account.Cloud_PSO/billing_associations.yaml) 
+file looks similar to this.  You need to add a new line that specifies your project ID.
+
+associations:
+- projectId: 32341657713 # created by stefanward@ for testing, demo and iteration of full tf org deploy  
+kyleromell
+
+stefanward@google.com
+wardo@fullbuildfunbus.joonix.net
+62ParUUjdR2d2aM=
+
+
+
+atamrat@google.com
+atamrat@fullbuildfunbus.joonix.net
+Q8ZgTePJQZ4C5yL&
+
+
+kyleromell@google.com
+kyleromell@fullbuildfunbus.joonix.net
+PrBDWgrFFUW79rC&
+
+thomashk@google.com
+thomashk@fullbuildfunbus.joonix.net
+bFeD6DeB3CP*4gZ=
+
+
+srikantpatra@google.com
+srikantpatra@fullbuildfunbus.joonix.net
+HLF>BWy4m7%H2uE=
+
+
+subhrajyotisau@google.com
+subhrajyotisau@fullbuildfunbus.joonix.net
+NFUnm4BuRT<T7gV=
+
+jonacto@fullbuildfunbus.joonix.net
+jonacto@google.com
+
+mandadhi@fullbuildfunbus.joonix.net
+mandadhi@google.com
+
+yugandharv@fullbuildfunbus.joonix.net
+yugandharv@google.com
+
+jacowell@fullbuildfunbus.joonix.net
+eAUbJeJuZ<aV2gW*
+jacowell@google.com
+
+
+
+In my haste to get the PSO teams fingers on keyboards building and testing TF code and pipeline automation, I might have picked the wrong env and looking for guidance.
+
+The needful thing:
+Large legacy fin company we are working with. 
+Goal, modernize their automation and pipelines as they migrate to gpc.
+
+Issue:
+This is going to be a very iterative process as the customer has over 200 integrated pipelines on prem. In short, there is going to be a lot of iterations of the full build process e3e.
+I created a joonix account but as I went to spin up the first project, I realized I had to create a CL for every project created within the org.
+
+Questions:
+Given the goal is to create the code and pipelines to build out the customers dev env from top level folders down to lowest level project. 
+Is there a way to preempt that CL?
+Does that just preserve the name and if we delete the projects, folders etc the next execution of the full build pipeline will reuse the names?
+Does this entire, very long project (we are working in the customers sandbox org OUTSIDE their main org) as the fin companies security cert process on all our products will not be done till middle of next year.  We want to make sure when that is done, all these pipelines are integrated in a cloud way and the build is sitting there ready to execute when the security certifications are done. 
+
+
+Steps to do
+finish billing account
+add dns https://docs.google.com/document/d/1oTAn2qZ82X0VMT_6Z5hmc9Z2oSYRRTFbgUH4eSN39Mc/edit?resourcekey=0-2Pn4qSSvc3lU8ul5chrAuA&tab=t.0#heading=h.kiqc4lq4ym9t
+create users
+create SSM https://b.corp.google.com/issues/new?component=1171762&template=1818595 pass in org name, id, my username for project bootme
+
+Billing Account Administrator
+
+export ORG_ID=32341657713
+
+gcloud organizations add-iam-policy-binding $ORG_ID \
+--member=serviceAccount:latchkey-multiorg-ephemeral-iam-automation@system.gserviceaccount.com \
+--role=roles/resourcemanager.organizationAdmin --condition=None
+
+gcloud organizations add-iam-policy-binding $ORG_ID \
+--member=serviceAccount:latchkey-multiorg-ephemeral-custom-automation@system.gserviceaccount.com \
+--role=roles/iam.organizationRoleAdmin --condition=None
+
+
+
+ln -s /usr/local/google/home/stefanward/DriveFileStream/My\ Drive/gitrepo gitrepo
+/usr/local/google/home/stefanward/DriveFileStream
+
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/gitrepo gitrepo
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/projects projects
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/scripts scripts
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/bin macbin
+ln -s /usr/local/google/home/stefanward/DriveFileStream/Other\ computers/My\ Mac/Downloads macDownloads
+
+
+
+

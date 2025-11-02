@@ -1,0 +1,80 @@
+aliases cp alias-finder sublime git github brew gcloud zsh-interactive-cd zsh-navigation-tools
+
+aliases
+- `als`				: show all aliases by group
+- `als -h/--help`	: print help message
+- `als <keyword(s)>`: filter and highlight aliases by `<keyword>`
+- `als --groups`	: show only group names
+
+sublime
+- st opens st new
+- st <file>
+- stt opens whatever directory you are in 
+
+
+
+zsh-navigation-tools
+The tools are:
+
+- `n-aliases` - browses aliases, relegates editing to `vared`
+- `n-cd` - browses dirstack and bookmarked directories, allows to enter selected directory
+- `n-functions` - browses functions, relegates editing to `zed` or `vared`
+- `n-history` - browses history, allows to edit and run commands from it
+- `n-kill` - browses processes list, allows to send signal to selected process
+- `n-env` - browses environment, relegates editing to `vared`
+- `n-options` - browses options, allows to toggle their state
+- `n-panelize` - loads output of given command into the list for browsing
+
+All tools support horizontal scroll with `<`,`>`, `{`,`}`, `h`,`l` or left and right cursors. Other keys are:
+
+- `H`, `?` (from n-history) - run n-help
+- `Ctrl-R` - start n-history, the incremental, multi-keyword history searcher (Zsh binding)
+- `Ctrl-A` - rotate entered words (1+2+3 -> 3+1+2)
+- `Ctrl-F` - fix mode (approximate matching)
+- `Ctrl-L` - redraw of whole display
+- `Ctrl-T` - browse themes (next theme)
+- `Ctrl-G` - browse themes (previous theme)
+- `Ctrl-U` - half page up
+- `Ctrl-D` - half page down
+- `Ctrl-P` - previous element (also done with vim's k)
+- `Ctrl-N` - next element (also done with vim's j)
+- `[`, `]` - jump directory bookmarks in n-cd and typical signals in n-kill
+- `g`, `G` - beginning and end of the list
+- `/` - show incremental search
+- `F3` - show/hide incremental search
+- `Esc` - exit incremental search, clearing filter
+- `Ctrl-W` (in incremental search) - delete whole word
+- `Ctrl-K` (in incremental search) - delete whole line
+- `Ctrl-O`, `o` - enter uniq mode (no duplicate lines)
+- `Ctrl-E`, `e` - edit private history (when in private history view)
+- `F1` - (in n-history) - switch view
+- `F2`, `Ctrl-X`, `Ctrl-/` - search predefined keywords (defined in config files)
+
+
+
+helm
+kube-ps1
+Kubectl
+pip
+
+pipenv
+terraform
+virtualenv
+
+
+
+
+
+
+https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-interactive-cd
+https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools
+
+
+
+
+
+themes
+Soliah
+cloud
+avit
+aussiegeek
