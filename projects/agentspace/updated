@@ -1,0 +1,71 @@
+More frequent index updates
+
+Image search
+
+Search with summarization
+
+Extractive segments
+
+Video search
+
+Ability to exclude URL paths
+
+Search with follow-ups
+
+Lower search latencies
+
+
+Boost search results that have certain labels
+
+Take page description information into account when finding matches
+
+Filtering based on page modification date
+
+Allow facets in widget based on custom metadata
+
+
+Need help testing this:
+
+1st pass
+
+In this section, you will create a website search data store using AI Applications. You will configure the data store to include only relevant online documentation while excluding dynamic URLs to improve search quality and reduce indexing costs. After setting up the data store, you will build a Site search with AI mode application, ensuring users can retrieve accurate information efficiently.
+
+To ensure high-quality search results while optimizing costs and performance, you need to:
+
+Include only relevant content from specific websites.
+Exclude dynamic URLs that could lead to irrelevant search results or index bloat.
+Use a basic indexing approach to minimize costs.
+You will build a data store with the required settings and test it with a search application.
+
+Note: Edit all the website URLs below to have the appropriate pattern to include or exclude all pages that start with the given URLs.
+
+Include content from pages that start with:
+
+https://cloud.google.com/generative-ai-app-builder/docs
+https://cloud.google.com/python/docs/reference/discoveryengine/latest
+https://github.com/googleapis/google-cloud-python/tree/main
+
+Exclude dynamic search query URLs that start with:
+
+https://cloud.google.com/s/results/generative-ai-app-builder/docs?q
+https://cloud.google.com/s/results/python/docs/reference?q
+https://github.com/search?q
+
+https://cloud.google.com/s/results/generative-ai-app-builder/docs?q*
+https://cloud.google.com/s/results/python/docs/reference?q*
+https://github.com/search?q*
+
+https://cloud.google.com/generative-ai-app-builder/docs/*
+https://cloud.google.com/python/docs/reference/discoveryengine/latest/*
+https://github.com/googleapis/google-cloud-python/tree/main/*
+
+
+
+
+cloud.google.com/generative-ai-app-builder/docs/*		
+cloud.google.com/python/docs/reference/discoveryengine/latest/*	
+github.com/googleapis/google-cloud-python/tree/main/*
+
+cloud.google.com/s/results/generative-ai-app-builder/docs?q*	
+cloud.google.com/s/results/python/docs/reference?q*		
+github.com/search*
