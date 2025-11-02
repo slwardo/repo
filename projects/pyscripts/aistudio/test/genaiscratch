@@ -1,0 +1,78 @@
+stefanward@slwardo-01 ~/projects/pyscripts/aistudio/test/generative-ai-docs% git sparse-checkout init --cone
+Updating files: 100% (696/696), done.
+warning: The following paths are not up to date and were left despite sparse patterns:
+	demos/palm/web/list-it/README.md
+	demos/palm/web/list-it/src/components/listLoading/listLoading.jsx
+	demos/palm/web/list-it/src/components/ui/button/button.jsx
+	demos/palm/web/list-it/src/styles/variables.scss
+	demos/palm/web/mood-food/.prettierrc
+	demos/palm/web/mood-food/index.html
+	demos/palm/web/mood-food/src/assets/icons/ServingLogo.js
+	demos/palm/web/mood-food/src/data/hero.js
+	demos/palm/web/mood-food/third_party/fonts/CinzelDecorative/CinzelDecorative-Regular.ttf
+	demos/palm/web/quick-prompt/.prettierrc
+	demos/palm/web/quick-prompt/src/components/layouts/gameScreen/gameScreen.jsx
+	demos/palm/web/quick-prompt/src/components/ui/bottomSheet/bottomSheet.module.scss
+	demos/palm/web/quick-prompt/src/lib/speech.js
+	demos/palm/web/talking-character/docs/talking-character-screen.png
+	demos/palm/web/talking-character/public/Doggo07.glb
+	demos/palm/web/talking-character/public/robots.txt
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.data
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.fetch.js
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.html
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.js
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.mem
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.wasm
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.wasm.debug.wasm
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.wasm.map
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_blendshapes_internal.worker.js
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_demo.binarypb
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_microphone_assets.data
+	demos/palm/web/talking-character/public/talking_head_v1/talking_heads_microphone_assets.js
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.data
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.fetch.js
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.html
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.js
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.mem
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.wasm
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.wasm.debug.wasm
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.wasm.map
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_blendshapes_internal.worker.js
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_demo.binarypb
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_microphone_assets.data
+	demos/palm/web/talking-character/public/talking_head_v2/talking_heads_v2_microphone_assets.js
+	demos/palm/web/talking-character/src/pages/personality.tsx
+	demos/palm/web/talking-character/third_party/mediapipe/web/graph_runner/platform_utils.ts
+	demos/palm/web/textfx/LICENSE
+	demos/palm/web/textfx/public/assets/landing/lotties/unexpect_hero_animation_lottie.json
+	demos/palm/web/textfx/src/components/generic/filterList/filterList.module.scss
+	demos/palm/web/textfx/src/components/generic/icon/icon-set/play.tsx
+	demos/palm/web/textfx/src/components/generic/icon/icon.tsx
+	demos/palm/web/textfx/src/components/generic/savedFilter/savedFilter.tsx
+	demos/palm/web/textfx/src/components/layouts/mainScreen/mainScreen.module.scss
+	demos/palm/web/textfx/src/hooks/useAnimationFrame.tsx
+	demos/palm/web/travel-planner/.prettierignore
+	demos/
+	After fixing the above paths, you may want to run `git sparse-checkout reapply`.
+
+more generative-ai-docs/.git/info/sparse-checkout
+	/*
+!/*/
+
+/usr/local/google/home/stefanward/projects/pyscripts/aistudio/test/generative-ai-docs/examples/gemini/python/docs-agent
+
+
+
+export PATH=$PATH:/usr/lib/google-golang/bin:/usr/local/buildtools/java/jdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/google/home/stefanward/.terraform/bin
+
+
+/projects/pyscripts/aistudio/test/generative-ai-docs/examples/gemini/python/docs-agent/docs_agent
+
+git checkout origin/HEAD -m examples/gemini/python/docs-agent/docs_agent/config.yaml
+
+
+
+
+
+
+
