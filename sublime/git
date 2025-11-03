@@ -16,6 +16,7 @@ cloudbuild-terraform-sa@bootstrap-474001.iam.gserviceaccount.com
 
 username is slwardo
 
+ssh-keygen -t rsa -b 4096 -C "stefan.ward@gmail.com" -f ~/.ssh/id_rsa
 
 ssh-keygen -t rsa -b 4096 -C "stefanward@google.com" -f ~/.ssh/id_rsa
 
