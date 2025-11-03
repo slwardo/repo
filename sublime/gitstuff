@@ -1,0 +1,46 @@
+gitstuff
+
+
+cd to repo
+repo
+
+git add .
+git commit -m "Add new push"
+git push origin main
+
+
+if you see .DS_Store errors
+git restore .
+
+
+if you get an error on a push, run the following
+
+git log -n 5 --oneline
+
+d9d9ad6 (HEAD -> main) Add new push
+3d93e97 (origin/main, origin/HEAD) Add new push
+2f0e3d6 Add new push
+59e6605 Add new push
+b3e564a Add new push
+
+EDITOR=vi git rebase -i 3d93e97
+
+to push
+cd loacl root
+git add .
+git commit-m "message"
+git push origin home-flow
+
+to pull
+# 1. Switch to main
+git checkout main
+
+# 2. Pull the changes from the server
+git pull origin main
+
+# 1. Switch back to your machine's branch (e.g., machine-a)
+git checkout machine-a
+
+# 2. Merge the updates from 'main' into your branch
+git merge main
+
